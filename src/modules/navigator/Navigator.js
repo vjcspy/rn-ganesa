@@ -33,6 +33,8 @@ MainScreenNavigator.navigationOptions = {
 const AppNavigator = StackNavigator({
                                       Home              : {screen: MainScreenNavigator},
                                       InfiniteColorStack: {screen: ColorViewContainer}
+                                    }, {
+                                      headerMode: "none"
                                     });
 
 export default AppNavigator;
