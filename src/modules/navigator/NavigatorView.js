@@ -21,6 +21,13 @@ class NavigatorView extends Component {
   render() {
     return (
       <AppNavigator
+        /*
+        * Why we need navigation here??? Cái này là để integrate react native navigation với redux
+        *  Nếu không có thì không dùng được stackNavigation
+        *  Có 2 điều kiện để navigation render lại UI
+        *  1. State change. Cái đó phải làm trong reducer
+        *  2. prop change ở trong các component
+        * */
         navigation={
           addNavigationHelpers({
                                  dispatch: this.props.dispatch,
