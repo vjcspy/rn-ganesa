@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import * as snapshot from '../utils/snapshot';
+import React, {Component} from "react";
+import * as snapshot from "../utils/snapshot";
 
 import {
   TouchableOpacity,
   ActionSheetIOS,
   StyleSheet
-} from 'react-native';
+} from "react-native";
 
 /**
  * Simple developer menu, which allows e.g. to clear the app state.
@@ -13,7 +13,7 @@ import {
  * ONLY FOR DEVELOPMENT MODE!
  */
 class DeveloperMenu extends Component {
-  static displayName = 'DeveloperMenu';
+  static displayName = "DeveloperMenu";
 
   showDeveloperMenu() {
     const options = {
@@ -25,14 +25,14 @@ class DeveloperMenu extends Component {
     const callback = async index => {
       if (index === options.clearState) {
         await snapshot.clearSnapshot();
-        console.warn('(╯°□°）╯︵ ┻━┻ \nState cleared, Cmd+R to reload the application now');
+        console.warn("(╯°□°）╯︵ ┻━┻ \nState cleared, Cmd+R to reload the application now");
       }
     };
 
     ActionSheetIOS.showActionSheetWithOptions({
       options: [
-        'Clear state',
-        'Cancel'
+        "Clear state",
+        "Cancel"
       ],
       cancelButtonIndex: options.cancel
     }, callback);
@@ -54,13 +54,13 @@ class DeveloperMenu extends Component {
 
 const styles = StyleSheet.create({
   circle: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 5,
     right: 5,
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   }
 });
 
