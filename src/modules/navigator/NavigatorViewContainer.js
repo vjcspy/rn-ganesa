@@ -3,6 +3,6 @@ import NavigatorView from "./NavigatorView";
 
 export default connect(
   state => ({
-    navigatorState: state.navigatorState.toJS()
+    navigatorState: state.navigatorState
   })
 )(NavigatorView);

@@ -1,11 +1,12 @@
-import {Record} from "immutable";
 import {generateRandomNumber} from "../../services/randomNumberService";
+import {makeRecordFactory} from "../../utils/record-factory";
+import {RESET_STATE} from "../session/SessionState";
 
 // Initial state
-const initialState = Record({
-                              value  : 0,
-                              loading: false
-                            });
+const initialState = makeRecordFactory({
+                                         value  : 0,
+                                         loading: false
+                                       });
 
 // Actions
 const INCREMENT       = "CounterState/INCREMENT";
@@ -48,6 +49,9 @@ export default function CounterStateReducer(state = initialState, action = {}) {
       return state
         .set("loading", false)
         .set("value", action.payload);
+    
+    case RESET_STATE:
+      return action.payload.counter ? makeRecordFactory(action.payload.counter) : initialState;
     
     default:
       return state;

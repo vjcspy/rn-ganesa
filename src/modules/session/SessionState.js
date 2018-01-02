@@ -26,7 +26,6 @@ export default function SessionStateReducer(state = initialState, action = {}) {
       return state.set("isReady", true);
     
     default:
-      console.log(state.isReady);
       return state;
   }
 }
