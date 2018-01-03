@@ -42,6 +42,7 @@
     "immutable": "^3.8.2",
     "lodash": "^4.11.0",
     "moment": "^2.20.1",
+    "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "^0.51.0",

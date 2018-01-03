@@ -7,7 +7,9 @@ import {
   Text,
   View
 } from "react-native";
-
+import {
+  Button
+} from "native-base";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 class CounterView extends Component {
@@ -114,7 +116,10 @@ class CounterView extends Component {
             {"I'm bored!"}
           </Text>
         </TouchableOpacity>
-      
+        
+        <Button block info style={styles.mb15}>
+          <Text>Light</Text>
+        </Button>
       </View>
     );
   }
