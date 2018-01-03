@@ -2,11 +2,15 @@ import {DrawerNavigator, StackNavigator} from "react-navigation";
 
 import CounterViewContainer from "../counter/CounterViewContainer";
 import ColorViewContainer from "../colors/ColorViewContainer";
+import {AuthLoginContainer} from "../auth/container/Login";
 
 const headerColor = "white";
 
 // TabNavigator is nested inside StackNavigator
 export const MainScreenNavigator = DrawerNavigator({
+                                                     Login  : {
+                                                       screen: AuthLoginContainer
+                                                     },
                                                      Counter: {
                                                        screen           : CounterViewContainer,
                                                        navigationOptions: {
