@@ -50,6 +50,9 @@ export default function CounterStateReducer(state = initialState, action = {}) {
         .set("loading", false)
         .set("value", action.payload);
     
+    case RANDOM_REQUEST:
+      return state.set("value", Math.floor(Math.random() * 101));
+    
     case RESET_STATE:
       return action.payload.counter ? makeRecordFactory(action.payload.counter) : initialState;
     
