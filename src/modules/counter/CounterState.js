@@ -1,4 +1,3 @@
-import {generateRandomNumber} from "../../services/randomNumberService";
 import {makeRecordFactory} from "../../utils/record-factory";
 import {RESET_STATE} from "../session/SessionState";
 
@@ -26,13 +25,6 @@ export function reset() {
 export function random() {
   return {
     type: RANDOM_REQUEST
-  };
-}
-
-export async function requestRandomNumber() {
-  return {
-    type   : RANDOM_RESPONSE,
-    payload: await generateRandomNumber()
   };
 }
 
