@@ -9,3 +9,6 @@ npm install
 npm start -- --reset-cache
 
 Xoá thư mục React trong ios/Pods/React
+
+có thể tham khảo nhưng không phải là cách fix
+https://stackoverflow.com/questions/40368211/rctbundleurlprovider-h-file-not-found-appdelegate-m
