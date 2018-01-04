@@ -33,9 +33,19 @@ export default class BackgroundWrapper extends Component {
         width         : "100%",
         height        : "100%",
         justifyContent: "center",
-        opacity       : 0.6
+        opacity       : 0.8
       }} source={this.props.background}>
       </Image>
+      
+      <Image style={{
+        backgroundColor: "black",
+        resizeMode     : "stretch",
+        position       : "absolute",
+        width          : "100%",
+        height         : "100%",
+        justifyContent : "center",
+        opacity        : 0.6
+      }}/>
       <View style={style}>
         {this.renderChildren()}
       </View>
@@ -56,17 +66,10 @@ BackgroundWrapper.propTypes = {
 };
 
 const styleWrapper = {
-  containerImage: {
-    width     : window.width,
-    height    : window.height,
-    resizeMode: getPlatformValue("android", "cover", "contain"),
-    paddingTop: getPlatformValue("android", 5, 22)
+  containerView: {
+    flex: 1
   },
-  containerView : {
-    flex      : 1,
-    paddingTop: getPlatformValue("android", 5, 22)
-  },
-  icon          : {
+  icon         : {
     marginLeft     : 10,
     position       : "relative",
     top            : 6,
@@ -74,3 +77,4 @@ const styleWrapper = {
     backgroundColor: "transparent"
   }
 };
+;
