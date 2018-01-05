@@ -1,5 +1,9 @@
-import {replaceAuthModuleReducer} from "./r/index";
+import {replaceModuleReducer} from "../../redux/store";
+import {authEffects} from "./r/effects";
+import {replaceModuleEffects} from "../../redux/effects";
+import {authModuleReducer} from "./r/reducer";
 
 export function authModuleBoot() {
-  replaceAuthModuleReducer();
+  replaceModuleReducer("auth", authModuleReducer);
+  replaceModuleEffects(authEffects);
 }

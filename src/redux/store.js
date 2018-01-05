@@ -1,9 +1,11 @@
 import {applyMiddleware, createStore, compose} from "redux";
 import middleware from "./middleware";
 import {createReducer} from "./reducer";
+import {effectMiddleware} from "./effects";
 
 const enhancers = [
-  applyMiddleware(...middleware)
+  applyMiddleware(...middleware),
+  applyMiddleware(effectMiddleware)
 ];
 
 /* Enable redux dev tools only in development.
@@ -21,10 +23,12 @@ const composeEnhancers = (
 const enhancer = composeEnhancers(...enhancers);
 
 // create the store
-const store           = createStore(
+const store = createStore(
   createReducer(),
   enhancer
 );
+
+// Replace module splice reducer
 const reducerReplaced = {};
 
 export function replaceModuleReducer(key: string, reducer) {

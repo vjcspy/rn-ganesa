@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
 import AppView from "./AppView";
-import {authModuleBoot} from "./auth/module";
+import {boot} from "./modules";
 
-authModuleBoot();
+boot();
 
 export default connect(
   state => {
