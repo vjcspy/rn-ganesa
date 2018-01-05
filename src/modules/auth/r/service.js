@@ -4,7 +4,7 @@ import {Subject} from "rxjs";
 class AuthSerivce {
   userChangeObservable;
   
-  async login(email, password) {
+  login(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
   
@@ -13,7 +13,11 @@ class AuthSerivce {
       this.userChangeObservable = new Subject();
       firebase.auth().onUserChanged((user) => this.userChangeObservable.next(user));
     }
-    return this.userChangeObservable.asObservable();
+    return this.userChangeObservable.asObservable().share();
+  }
+  
+  logout() {
+    return firebase.auth().signOut();
   }
 }
 

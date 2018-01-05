@@ -1,3 +1,4 @@
+import {PropTypes} from "prop-types";
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {View, Animated} from "react-native";
@@ -6,7 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import background from "../../../images/ec-background.jpeg";
 import {Button, Text, Item, Input, Label} from "native-base";
 import accountStyle from "../styles/account";
-import {actionLoginWithEmail} from "../r/actions";
+import {actionLoginWithEmail, actionLogout} from "../r/actions";
 
 class AuthLoginView extends Component {
   state = {
@@ -18,10 +19,6 @@ class AuthLoginView extends Component {
       loginPositionTop    : new Animated.Value(1402),
       statusPositionTop   : new Animated.Value(1542)
     }
-  };
-  
-  handlePressSignIn = async () => {
-    this.props.dispatch(actionLoginWithEmail(this.state.email, this.state.password));
   };
   
   componentDidMount() {
@@ -46,6 +43,16 @@ class AuthLoginView extends Component {
     
                       ]).start();
   }
+  
+  handlePressSignIn = () => {
+    this.props.dispatch(actionLoginWithEmail(this.state.email, this.state.password));
+  };
+  
+  signOut = () => {
+    this.state.email    = "";
+    this.state.password = "";
+    this.props.dispatch(actionLogout());
+  };
   
   render() {
     return (
@@ -73,14 +80,23 @@ class AuthLoginView extends Component {
                   style={{position: "relative", left: this.state.animation.usernamePostionLeft}}>
                   <Item style={accountStyle.textInputEmail} fixedLabel>
                     <Label>Email</Label>
-                    <Input onChangeText={(email) => {this.setState({email});}} keyboardType="email-address" autoCorrect={false} autoCapitalize="none"/>
+                    <Input onChangeText={(email) => {this.setState({email});}}
+                           defaultValue={this.props.auth.user ? this.props.auth.user["email"] : ""}
+                           editable={this.props.auth.user === null}
+                           keyboardType="email-address"
+                           autoCorrect={false} autoCapitalize="none"/>
                   </Item>
                 </Animated.View>
                 <Animated.View
                   style={{position: "relative", left: this.state.animation.passwordPositionLeft}}>
                   <Item style={accountStyle.textInputPassword} fixedLabel>
                     <Label>Password</Label>
-                    <Input onChangeText={(password) => {this.setState({password});}} secureTextEntry={true} autoCorrect={false} autoCapitalize="none"/>
+                    <Input onChangeText={(password) => {this.setState({password});}}
+                           defaultValue=""
+                           editable={this.props.auth.user === null}
+                           secureTextEntry={true}
+                           autoCorrect={false}
+                           autoCapitalize="none"/>
                   </Item>
                 </Animated.View>
                 <Animated.View style={{position: "relative", top: this.state.animation.loginPositionTop}}>
@@ -89,14 +105,16 @@ class AuthLoginView extends Component {
               
               <View style={accountStyle.accountContentButtonContainer}>
                 <View style={{flex: 0.5}}>
-                  <Button light style={accountStyle.accountContentButton}>
-                    <Text style={accountStyle.accountContentTextButton}>Cancel </Text>
+                  <Button light style={accountStyle.accountContentButton}
+                          disabled={this.props.auth.user === null}
+                          onPress={this.signOut}>
+                    <Text style={accountStyle.accountContentTextButton}>Sign Out </Text>
                   </Button>
                 </View>
                 <View style={{flex: 0.03}}/>
                 <View style={{flex: 0.5}}>
                   <Button light style={accountStyle.accountContentButton} onPress={this.handlePressSignIn}>
-                    <Text style={accountStyle.accountContentTextButton}> Done </Text>
+                    <Text style={accountStyle.accountContentTextButton}> Sign In </Text>
                   </Button>
                 </View>
               </View>
@@ -126,3 +144,8 @@ export const AuthLoginContainer = connect(
     dispatch
   })
 )(AuthLoginView);
+
+AuthLoginView.propTypes = {
+  dispatch: PropTypes.any.isRequired,
+  auth    : PropTypes.any.isRequired
+};

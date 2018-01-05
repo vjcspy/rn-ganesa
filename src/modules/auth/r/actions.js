@@ -23,3 +23,17 @@ export const actionSaveUser = (user) => ({
   type   : ACTION_SAVE_USER,
   payload: {user}
 });
+
+export const ACTION_LOGOUT = "ACTION_LOGOUT";
+
+export const actionLogout = () => ({
+  type   : ACTION_LOGOUT,
+  payload: {}
+});
+
+export const ACTION_AFTER_LOGOUT = "ACTION_AFTER_LOGOUT";
+
+export const actionAfterLogout = (isOk = true, err) => ({
+  type   : ACTION_AFTER_LOGOUT,
+  payload: {isOk, err}
+});
