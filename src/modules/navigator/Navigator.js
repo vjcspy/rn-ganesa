@@ -2,16 +2,13 @@ import {DrawerNavigator, StackNavigator} from "react-navigation";
 
 import CounterViewContainer from "../counter/CounterViewContainer";
 import ColorViewContainer from "../colors/ColorViewContainer";
-import {AuthLoginContainer} from "../auth/container/Login";
 import {PosLoginViewContainer} from "../pos/pages/outlet-register/Outlet";
+import {AuthLoginContainer} from "../auth/pages/Login";
 
 const headerColor = "white";
 
 // TabNavigator is nested inside StackNavigator
 export const MainScreenNavigator = DrawerNavigator({
-                                                     Outlet : {
-                                                       screen: PosLoginViewContainer
-                                                     },
                                                      Login  : {
                                                        screen: AuthLoginContainer
                                                      },
@@ -20,6 +17,9 @@ export const MainScreenNavigator = DrawerNavigator({
                                                      },
                                                      Color  : {
                                                        screen: ColorViewContainer
+                                                     },
+                                                     Outlet : {
+                                                       screen: PosLoginViewContainer
                                                      }
                                                    });
 

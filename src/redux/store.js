@@ -21,9 +21,17 @@ const composeEnhancers = (
 const enhancer = composeEnhancers(...enhancers);
 
 // create the store
-const store = createStore(
+const store           = createStore(
   createReducer(),
   enhancer
 );
+const reducerReplaced = {};
+
+export function replaceModuleReducer(key: string, reducer) {
+  if (reducerReplaced[key] !== true) {
+    store.replaceReducer(reducer);
+    reducerReplaced[key] = true;
+  }
+}
 
 export default store;

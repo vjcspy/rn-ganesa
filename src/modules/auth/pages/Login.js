@@ -1,14 +1,16 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 import {View, Animated} from "react-native";
 import BackgroundWrapper from "../../../components/partials/BackgroundWrapper";
 import Icon from "react-native-vector-icons/FontAwesome";
 import background from "../../../images/ec-background.jpeg";
 import {Button, Text, Item, Input, Label} from "native-base";
 import accountStyle from "../styles/account";
+import firebase from "react-native-firebase";
 
 class AuthLoginView extends Component {
   state = {
-    username : "",
+    email    : "",
     password : "",
     animation: {
       usernamePostionLeft : new Animated.Value(795),
@@ -18,9 +20,14 @@ class AuthLoginView extends Component {
     }
   };
   
-  handlePressSignIn = () => {
-  
+  handlePressSignIn = async () => {
+    const user = await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
+    console.log(user);
   };
+  
+  constructor(prop) {
+    super(prop);
+  }
   
   componentDidMount() {
     const timing = Animated.timing;
@@ -71,14 +78,14 @@ class AuthLoginView extends Component {
                   style={{position: "relative", left: this.state.animation.usernamePostionLeft}}>
                   <Item style={accountStyle.textInputEmail} fixedLabel>
                     <Label>Email</Label>
-                    <Input/>
+                    <Input onChangeText={(email) => {this.setState({email});}} keyboardType="email-address" autoCorrect={false} autoCapitalize="none"/>
                   </Item>
                 </Animated.View>
                 <Animated.View
                   style={{position: "relative", left: this.state.animation.passwordPositionLeft}}>
                   <Item style={accountStyle.textInputPassword} fixedLabel>
                     <Label>Password</Label>
-                    <Input/>
+                    <Input onChangeText={(password) => {this.setState({password});}} secureTextEntry={true} autoCorrect={false} autoCapitalize="none"/>
                   </Item>
                 </Animated.View>
                 <Animated.View style={{position: "relative", top: this.state.animation.loginPositionTop}}>
@@ -93,7 +100,7 @@ class AuthLoginView extends Component {
                 </View>
                 <View style={{flex: 0.03}}/>
                 <View style={{flex: 0.5}}>
-                  <Button light style={accountStyle.accountContentButton}>
+                  <Button light style={accountStyle.accountContentButton} onPress={this.handlePressSignIn}>
                     <Text style={accountStyle.accountContentTextButton}> Done </Text>
                   </Button>
                 </View>
@@ -116,4 +123,8 @@ class AuthLoginView extends Component {
   }
 }
 
-export default AuthLoginView;
+export const AuthLoginContainer = connect(
+  state => ({
+    auth: state.auth
+  })
+)(AuthLoginView);

@@ -1,10 +1,18 @@
 export class AuthActions {
-  static ACTION_LOGIN = "ACTION_LOGIN";
+  static ACTION_LOGIN       = "ACTION_LOGIN";
+  static ACTION_AFTER_LOGIN = "ACTION_AFTER_LOGIN";
   
-  static login(user) {
+  static actionLoginWithEmail(email, password) {
     return {
       type   : AuthActions.ACTION_LOGIN,
-      payload: {user}
+      payload: {email, password}
+    };
+  }
+  
+  static actionAfterLogin(isOk: boolean, data) {
+    return {
+      type   : AuthActions.ACTION_AFTER_LOGIN,
+      payload: {isOk, data}
     };
   }
 }
