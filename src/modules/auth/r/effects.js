@@ -9,7 +9,6 @@ const login = actions$ => actions$.ofType(ACTION_LOGIN)
                                       action.payload["email"],
                                       action.payload["password"]
                                     )).map((user) => {
-                                      console.log(user);
                                       return actionAfterLogin(true, {user});
                                     });
                                   })
