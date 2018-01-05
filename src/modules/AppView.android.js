@@ -8,6 +8,7 @@ import store from "../redux/store";
 import DeveloperMenu from "../components/DeveloperMenu";
 
 import {NavigationActions} from "react-navigation";
+import {actionAppDidMount} from "../redux/actions";
 
 class AppView extends Component {
   static displayName = "AppView";
@@ -37,6 +38,8 @@ class AppView extends Component {
   }
   
   componentDidMount() {
+    this.props.dispatch(actionAppDidMount());
+    
     snapshotUtil.resetSnapshot()
                 .then(snapshot => {
                   const {dispatch} = this.props;

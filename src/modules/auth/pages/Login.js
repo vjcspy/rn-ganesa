@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import background from "../../../images/ec-background.jpeg";
 import {Button, Text, Item, Input, Label} from "native-base";
 import accountStyle from "../styles/account";
-import {AuthActions} from "../r/actions";
+import {actionLoginWithEmail} from "../r/actions";
 
 class AuthLoginView extends Component {
   state = {
@@ -21,7 +21,7 @@ class AuthLoginView extends Component {
   };
   
   handlePressSignIn = async () => {
-    this.props.authActions.actionLoginWithEmail(this.state.email, this.state.password);
+    this.props.dispatch(actionLoginWithEmail(this.state.email, this.state.password));
   };
   
   componentDidMount() {
@@ -123,6 +123,6 @@ export const AuthLoginContainer = connect(
     auth: state.auth
   }),
   dispatch => ({
-    authActions: new AuthActions(dispatch)
+    dispatch
   })
 )(AuthLoginView);

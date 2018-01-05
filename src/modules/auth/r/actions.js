@@ -1,33 +1,25 @@
-import {Actions} from "../../../redux/actions";
+export const ACTION_LOGIN       = "ACTION_LOGIN";
+export const ACTION_AFTER_LOGIN = "ACTION_AFTER_LOGIN";
+export const ACTION_USER_CHANGE = "ACTION_USER_CHANGE";
 
-export class AuthActions extends Actions {
-  static ACTION_LOGIN       = "ACTION_LOGIN";
-  static ACTION_AFTER_LOGIN = "ACTION_AFTER_LOGIN";
-  
-  constructor(dispatch = null) {
-    super();
-    return this.init("auth", dispatch, this);
-  }
-  
-  actionLoginWithEmail(email, password, dispatch = true) {
-    const action = {
-      type   : AuthActions.ACTION_LOGIN,
-      payload: {email, password}
-    };
-    if (dispatch) {
-      this.dispatch(action);
-    }
-    return action;
-  }
-  
-  actionAfterLogin(isOk: boolean, data = {}, dispatch = true) {
-    const action = {
-      type   : AuthActions.ACTION_AFTER_LOGIN,
-      payload: {isOk, data}
-    };
-    if (dispatch) {
-      this.dispatch(action);
-    }
-    return action;
-  }
-}
+export const actionLoginWithEmail = (email, password) => ({
+  type   : ACTION_LOGIN,
+  payload: {email, password}
+});
+
+export const actionAfterLogin = (isOk: boolean, data = {}) => ({
+  type   : ACTION_AFTER_LOGIN,
+  payload: {isOk, data}
+});
+
+export const actionUserChange = (user) => ({
+  type   : ACTION_USER_CHANGE,
+  payload: {user}
+});
+
+export const ACTION_SAVE_USER = "ACTION_SAVE_USER";
+
+export const actionSaveUser = (user) => ({
+  type   : ACTION_SAVE_USER,
+  payload: {user}
+});
