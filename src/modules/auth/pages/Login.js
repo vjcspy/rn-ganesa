@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import background from "../../../images/ec-background.jpeg";
 import {Button, Text, Item, Input, Label} from "native-base";
 import accountStyle from "../styles/account";
-import firebase from "react-native-firebase";
+import {AuthActions} from "../r/actions";
 
 class AuthLoginView extends Component {
   state = {
@@ -21,13 +21,8 @@ class AuthLoginView extends Component {
   };
   
   handlePressSignIn = async () => {
-    const user = await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
-    console.log(user);
+    this.props.authActions.actionLoginWithEmail(this.state.email, this.state.password);
   };
-  
-  constructor(prop) {
-    super(prop);
-  }
   
   componentDidMount() {
     const timing = Animated.timing;
@@ -126,5 +121,8 @@ class AuthLoginView extends Component {
 export const AuthLoginContainer = connect(
   state => ({
     auth: state.auth
+  }),
+  dispatch => ({
+    authActions: new AuthActions(dispatch)
   })
 )(AuthLoginView);
