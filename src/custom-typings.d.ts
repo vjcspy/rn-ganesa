@@ -1,1 +1,2 @@
-declare module "*";
+// declare module "*";
+// declare var window: any;

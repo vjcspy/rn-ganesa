@@ -1,20 +1,25 @@
 import * as React from "react";
-import {View} from "react-native";
+import {Button, View} from "react-native";
 import {connect} from "react-redux";
 import {outletRegisterStyles} from "../../styles/outlet-register";
 import {Label} from "native-base";
 import {translate} from "../../../../i18n/i18n";
 import {RegisterViewContainer} from "./Register";
+import {ProcessBarWrapper} from "../../components/ProcessBarWrapper";
+import {actionUpdateProgressBar} from "../../r/progress-bar/actions";
 
-class PosOutletView extends React.Component {
+class PosOutletView extends React.Component<any, any> {
     state = {};
     
-    outletRegisterData = {
+    protected p = 0;
     
-    };
+    protected test(): void {
+        this.p += 0.1;
+        this.props.dispatch(actionUpdateProgressBar(this.p));
+    }
     
     render() {
-        return (
+        return <ProcessBarWrapper>
             <View style={outletRegisterStyles.container}>
                 <View style={outletRegisterStyles.outletForm}>
                     <View style={{flex: 113}}/>
@@ -32,6 +37,7 @@ class PosOutletView extends React.Component {
                         
                         <View style={outletRegisterStyles.registerContainer}>
                             <RegisterViewContainer></RegisterViewContainer>
+                            <Button title="Test" onPress={() => this.test()}/>
                         </View>
                     
                     </View>
@@ -39,8 +45,11 @@ class PosOutletView extends React.Component {
                     <View style={{flex: 113}}/>
                 </View>
             </View>
-        );
+        </ProcessBarWrapper>;
     }
 }
 
-export const PosOutletViewContainer = connect()(PosOutletView);
+export const PosOutletViewContainer = connect(
+    state => ({}),
+    dispatch => ({dispatch})
+)(PosOutletView);
