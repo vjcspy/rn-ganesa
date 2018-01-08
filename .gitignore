@@ -66,9 +66,5 @@ lib/
 # Jest
 #
 .jest/# TypeScript
-      #
-      lib/
-
-      # Jest
-      #
-      .jest/
+# Jest
+.jest/
