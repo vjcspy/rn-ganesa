@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {View, Animated} from "react-native";
 import BackgroundWrapper from "../../../components/partials/BackgroundWrapper";
 import Icon from "react-native-vector-icons/FontAwesome";
-import background from "../../../images/ec-background.jpeg";
+import background from "../../../../images/ec-background.jpeg";
 import {Button, Text, Item, Input, Label} from "native-base";
 import accountStyle from "../styles/account";
 import {actionLoginWithEmail, actionLogout} from "../r/actions";

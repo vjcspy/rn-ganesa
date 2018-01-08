@@ -7,7 +7,7 @@ export const actionLoginWithEmail = (email, password) => ({
   payload: {email, password}
 });
 
-export const actionAfterLogin = (isOk: boolean, data = {}) => ({
+export const actionAfterLogin = (isOk, data = {}) => ({
   type   : ACTION_AFTER_LOGIN,
   payload: {isOk, data}
 });

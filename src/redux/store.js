@@ -31,7 +31,7 @@ const store = createStore(
 // Replace module splice reducer
 const reducerReplaced = {};
 
-export function replaceModuleReducer(key: string, reducer) {
+export function replaceModuleReducer(key, reducer) {
   if (reducerReplaced[key] !== true) {
     store.replaceReducer(reducer);
     reducerReplaced[key] = true;

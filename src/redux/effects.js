@@ -11,13 +11,13 @@ const exampleEffect = action$ => {
 
 let appEffects = [exampleEffect];
 
-export function createAppEffects(asyncEffects: Array = []) {
+export function createAppEffects(asyncEffects = []) {
   appEffects = _.union(_.concat(appEffects, ...asyncEffects));
   return combineEpics(...appEffects);
 }
 
 export const effectMiddleware = createEpicMiddleware(createAppEffects());
 
-export function replaceModuleEffects(asyncEffects: Array = []) {
+export function replaceModuleEffects(asyncEffects) {
   effectMiddleware.replaceEpic(createAppEffects(asyncEffects));
 }

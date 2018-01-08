@@ -12,6 +12,6 @@ const appReducers = {
   session       : SessionStateReducer
 };
 
-export function createReducer(asyncReducers = {}): any {
+export function createReducer(asyncReducers = {}) {
   return combineReducers(Object.assign(appReducers, asyncReducers));
 }

@@ -58,3 +58,17 @@ android
 /ios/Ganesa/
 /ios/Ganesa.xcodeproj/
 /ios/GanesaTests/
+
+# TypeScript
+#
+lib/
+
+# Jest
+#
+.jest/# TypeScript
+      #
+      lib/
+
+      # Jest
+      #
+      .jest/

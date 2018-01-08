@@ -1,15 +1,16 @@
 import {Provider} from "react-redux";
-import store from "../src/redux/store";
-import AppViewContainer from "../src/modules/AppViewContainer";
+import store from "./redux/store";
+import AppViewContainer from "./modules/AppViewContainer";
 
 import React, {Component} from "react";
 
 import {StyleProvider, Root} from "native-base";
-import getTheme from "../src/native-base-theme/components";
-import variables from "../src/native-base-theme/variables/commonColor";
+import getTheme from "./native-base-theme/components";
+import variables from "./native-base-theme/variables/commonColor";
 import "./vendor";
+import {AppRegistry} from "react-native";
 
-export default class Ganesa extends Component {
+class Ganesa extends Component {
   render() {
     return (
       <StyleProvider style={getTheme(variables)}>
@@ -22,3 +23,5 @@ export default class Ganesa extends Component {
     );
   }
 }
+
+AppRegistry.registerComponent("Ganesa", () => Ganesa);
