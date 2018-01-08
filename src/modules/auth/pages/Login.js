@@ -26,7 +26,7 @@ class AuthLoginView extends Component {
     Animated.parallel([
                         timing(this.state.animation.usernamePostionLeft, {
                           toValue : 0,
-                          duration: 700
+                          duration: 900
                         }),
                         timing(this.state.animation.passwordPositionLeft, {
                           toValue : 0,
@@ -34,11 +34,11 @@ class AuthLoginView extends Component {
                         }),
                         timing(this.state.animation.loginPositionTop, {
                           toValue : 0,
-                          duration: 700
+                          duration: 900
                         }),
                         timing(this.state.animation.statusPositionTop, {
                           toValue : 0,
-                          duration: 700
+                          duration: 900
                         })
     
                       ]).start();
@@ -62,15 +62,18 @@ class AuthLoginView extends Component {
             
             {/*social login*/}
             <View style={accountStyle.socialLoginContent}>
-              <Button iconLeft style={accountStyle.socialButton} danger>
-                <Icon name="google" style={accountStyle.buttonIcon}/>
-                <Text>Sign in with Google+</Text>
-              </Button>
-              <Button iconLeft style={accountStyle.socialButton}>
-                <Icon name="facebook-official" style={accountStyle.buttonIcon}/>
-                <Text>Sign in with Facebook</Text>
-              </Button>
-              <Text style={accountStyle.socialTextSignin}>Or sign in with your account!</Text>
+              <Animated.View
+                style={{position: "relative", bottom: this.state.animation.loginPositionTop}}>
+                <Button iconLeft style={accountStyle.socialButton} danger>
+                  <Icon name="google" style={accountStyle.buttonIcon}/>
+                  <Text>Sign in with Google+</Text>
+                </Button>
+                <Button iconLeft style={accountStyle.socialButton}>
+                  <Icon name="facebook-official" style={accountStyle.buttonIcon}/>
+                  <Text>Sign in with Facebook</Text>
+                </Button>
+                <Text style={accountStyle.socialTextSignin}>Or sign in with your account!</Text>
+              </Animated.View>
             </View>
             
             {/*account login*/}
@@ -88,7 +91,7 @@ class AuthLoginView extends Component {
                   </Item>
                 </Animated.View>
                 <Animated.View
-                  style={{position: "relative", left: this.state.animation.passwordPositionLeft}}>
+                  style={{position: "relative", right: this.state.animation.passwordPositionLeft}}>
                   <Item style={accountStyle.textInputPassword} fixedLabel>
                     <Label>Password</Label>
                     <Input onChangeText={(password) => {this.setState({password});}}
@@ -104,19 +107,27 @@ class AuthLoginView extends Component {
               </View>
               
               <View style={accountStyle.accountContentButtonContainer}>
-                <View style={{flex: 0.5}}>
+                <Animated.View style={{
+                  flex    : 0.5,
+                  position: "relative",
+                  top     : this.state.animation.loginPositionTop
+                }}>
                   <Button light style={accountStyle.accountContentButton}
                           disabled={this.props.auth.user === null}
                           onPress={this.signOut}>
                     <Text style={accountStyle.accountContentTextButton}>Sign Out </Text>
                   </Button>
-                </View>
+                </Animated.View>
                 <View style={{flex: 0.03}}/>
-                <View style={{flex: 0.5}}>
+                <Animated.View style={{
+                  flex    : 0.5,
+                  position: "relative",
+                  top     : this.state.animation.loginPositionTop
+                }}>
                   <Button light style={accountStyle.accountContentButton} onPress={this.handlePressSignIn}>
                     <Text style={accountStyle.accountContentTextButton}> Sign In </Text>
                   </Button>
-                </View>
+                </Animated.View>
               </View>
               
               <View style={accountStyle.forgotPassText}>

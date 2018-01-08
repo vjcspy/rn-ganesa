@@ -9,11 +9,11 @@ const headerColor = "white";
 
 // TabNavigator is nested inside StackNavigator
 export const MainScreenNavigator = DrawerNavigator({
-                                                     Outlet : {
-                                                       screen: PosOutletViewContainer
-                                                     },
                                                      Login  : {
                                                        screen: AuthLoginContainer
+                                                     },
+                                                     Outlet : {
+                                                       screen: PosOutletViewContainer
                                                      },
                                                      Counter: {
                                                        screen: CounterViewContainer
