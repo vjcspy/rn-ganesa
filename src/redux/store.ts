@@ -60,4 +60,10 @@ function getState$(store) {
     });
 }
 
-export const store$ = getState$(store).share();
+let storeStream       = getState$(store).share();
+storeStream["select"] = (key: string) => {
+    return storeStream.map((state) => state[key]).distinctUntilChanged();
+};
+
+
+export const store$ = storeStream;

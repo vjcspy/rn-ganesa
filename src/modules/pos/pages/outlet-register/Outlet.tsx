@@ -8,7 +8,6 @@ import {RegisterViewContainer} from "./Register";
 import {PosViewWrapper} from "../../components/PosViewWrapper";
 import {ProgressActions} from "../../r/progress-bar/actions";
 import {ObjectManager} from "../../core/framework/General/App/ObjectManager";
-import {store$} from "../../../../redux/store";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
@@ -18,11 +17,9 @@ class PosOutletView extends React.Component<any, any> {
     protected test(): void {
         this.p += 0.1;
         this.getProgressAction().updateProgressBar(this.p);
-        store$.subscribe((state) => console.log(state));
     }
     
     render() {
-        store$.subscribe((state) => console.log(state));
         return <PosViewWrapper>
             <View style={outletRegisterStyles.container}>
                 <View style={outletRegisterStyles.outletForm}>
