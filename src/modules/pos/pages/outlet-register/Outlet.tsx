@@ -6,7 +6,7 @@ import {Label} from "native-base";
 import {translate} from "../../../../i18n/i18n";
 import {RegisterViewContainer} from "./Register";
 import {PosViewWrapper} from "../../components/PosViewWrapper";
-import {ProgressActions} from "../../r/progress-bar/actions";
+import {ProgressActions} from "../../R/progress-bar/actions";
 import {ObjectManager} from "../../core/framework/General/App/ObjectManager";
 
 class PosOutletView extends React.Component<any, any> {
