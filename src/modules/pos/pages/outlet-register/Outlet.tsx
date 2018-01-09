@@ -5,7 +5,7 @@ import {outletRegisterStyles} from "../../styles/outlet-register";
 import {Label} from "native-base";
 import {translate} from "../../../../i18n/i18n";
 import {RegisterViewContainer} from "./Register";
-import {ProcessBarWrapper} from "../../components/ProcessBarWrapper";
+import {PosViewWrapper} from "../../components/PosViewWrapper";
 import {actionUpdateProgressBar} from "../../r/progress-bar/actions";
 
 class PosOutletView extends React.Component<any, any> {
@@ -19,7 +19,7 @@ class PosOutletView extends React.Component<any, any> {
     }
     
     render() {
-        return <ProcessBarWrapper>
+        return <PosViewWrapper>
             <View style={outletRegisterStyles.container}>
                 <View style={outletRegisterStyles.outletForm}>
                     <View style={{flex: 113}}/>
@@ -45,7 +45,7 @@ class PosOutletView extends React.Component<any, any> {
                     <View style={{flex: 113}}/>
                 </View>
             </View>
-        </ProcessBarWrapper>;
+        </PosViewWrapper>;
     }
 }
 

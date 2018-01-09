@@ -1,10 +1,13 @@
 import * as React from "react";
 import {View, Animated, Dimensions} from "react-native";
 import {connect} from "react-redux";
-import {Container, Header, Content, Spinner} from 'native-base';
+import {Spinner} from 'native-base';
+import {getStatusBarHeight} from "../../ultils/native/status-bar";
+import {PosStyleVariable} from "../../styles/variable";
 
-const deviceHeight = Dimensions.get("window").height;
-const deviceWidth  = Dimensions.get("window").width;
+// const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
+
 
 class ProgressBar extends React.Component<any, any> {
     animation: Animated.Value;
@@ -35,15 +38,14 @@ class ProgressBar extends React.Component<any, any> {
                                                                });
         return <View style={{
             flexDirection: "row",
-            height,
             position: "absolute",
-            top: deviceHeight - height,
+            top: getStatusBarHeight(),
             width: deviceWidth
         }}>
             <View style={{flex: 1}}>
                 {this.isShowProgress() && (
                     <View>
-                        <Spinner/>
+                        <Spinner color={PosStyleVariable.spinnerColor}/>
                         <Animated.View
                             style={{
                                 position: "absolute",
@@ -51,7 +53,8 @@ class ProgressBar extends React.Component<any, any> {
                                 top: 0,
                                 bottom: 0,
                                 width: widthInterpolated,
-                                backgroundColor: barColor
+                                backgroundColor: barColor,
+                                height,
                             }}
                         />
                     </View>
@@ -62,34 +65,12 @@ class ProgressBar extends React.Component<any, any> {
 }
 
 ProgressBar['defaultProps'] = {
-    height: 5,
-    barColor: "#3258bb",
+    height: PosStyleVariable.progressBarHeight,
+    barColor: PosStyleVariable.progressBarColor,
 };
 
-const ProgressBarContainer: any = connect(
+export const ProgressBarContainer: any = connect(
     state => ({
         progressBar: state['progressBar']
     })
 )(ProgressBar);
-
-export class ProcessBarWrapper extends React.Component<any, any> {
-    state = {
-        progress: 0
-    };
-    
-    renderChildren() {
-        let childrens = [];
-        childrens.push(this.props.children);
-        return childrens;
-    }
-    
-    render() {
-        return <View>
-            <ProgressBarContainer/>
-            <View>
-                {this.renderChildren()}
-            </View>
-        </View>
-    }
-}
-
