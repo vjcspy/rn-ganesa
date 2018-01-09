@@ -66,7 +66,8 @@
     "redux-logger": "^2.6.1",
     "redux-observable": "^0.17.0",
     "rxjs": "^5.5.6",
-    "standard-http-error": "^2.0.1"
+    "standard-http-error": "^2.0.1",
+    "typed-immutable-record": "^0.0.6"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.6",
