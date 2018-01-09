@@ -20,8 +20,7 @@ export class ObjectManager {
     }
     
     i<T>(className: any, ...args: any[]): T {
-        const identify = className.getClassName();
-        console.log(identify);
+        const identify = className.name;
         if (!this._sharedInstance.hasOwnProperty(identify)) {
             let instance = Object.create(className.prototype);
             if (!_.isEmpty(args))

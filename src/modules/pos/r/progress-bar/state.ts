@@ -5,9 +5,7 @@ export interface ProgressState {
     duration: number;
 }
 
-export interface ProgressStateRecord extends TypedRecord<any>, ProgressState {
-
-}
+export interface ProgressStateRecord extends TypedRecord<any>, ProgressState {}
 
 export const progressStateFactory = makeTypedFactory<ProgressState, ProgressStateRecord>(
     {
