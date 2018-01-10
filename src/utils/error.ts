@@ -1,5 +1,5 @@
 export class Error {
-    constructor(public message: string, public e: any) {
+    constructor(public message: string, public e?: any) {
     }
     
     getMessage(): string {

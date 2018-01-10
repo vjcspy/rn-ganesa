@@ -25,4 +25,14 @@ export class ProgressActions {
         
         return action;
     }
+    
+    test(dispatch: boolean = true): Action {
+        const action = {type: "PING", payload: {}};
+        
+        if (dispatch === true) {
+            this.store$.dispatch(action);
+        }
+        
+        return action;
+    }
 }

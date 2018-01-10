@@ -16,7 +16,7 @@ class PosOutletView extends React.Component<any, any> {
     
     protected test(): void {
         this.p += 0.1;
-        this.getProgressAction().updateProgressBar(this.p);
+        this.getProgressAction().test();
     }
     
     render() {
