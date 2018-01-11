@@ -6,10 +6,6 @@ import {boot} from "./modules";
 boot();
 
 export default connect(
-  state => {
-    return ({
-      isReady: state["session"].get("isReady")
-    });
-  },
+  () => ({}),
   dispatch => ({dispatch})
 )(AppView);

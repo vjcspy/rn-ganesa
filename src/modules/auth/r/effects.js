@@ -1,7 +1,7 @@
 import {Observable} from "rxjs";
 import {ACTION_LOGIN, ACTION_LOGOUT, ACTION_USER_CHANGE, actionAfterLogin, actionAfterLogout, actionSaveUser, actionUserChange} from "./actions";
 import {authService} from "./service";
-import {ACTION_APP_DID_MOUNT} from "../../../redux/actions";
+import {ACTION_APP_DID_MOUNT} from "../../../framework/redux/actions";
 
 const login = actions$ => actions$.ofType(ACTION_LOGIN)
                                   .switchMap((action) => {

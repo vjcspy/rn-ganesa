@@ -1,4 +1,4 @@
-import {replaceModuleReducer} from "../../redux/store";
+import {replaceModuleReducer} from "../../framework/redux/store";
 import {posReducer} from "./R/index";
 
 export function posModuleBoot() {

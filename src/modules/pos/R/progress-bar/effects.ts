@@ -1,4 +1,4 @@
-import {Effect} from "../../../../redux/observable/effect";
+import {Effect} from "../../../../framework/redux/observable/effect";
 import {Subject} from "rxjs/Subject";
 
 export class ProgressBarEffect {

@@ -2,7 +2,6 @@ import {applyMiddleware, createStore, compose} from "redux";
 import middleware from "./middleware";
 import {createReducer} from "./reducer";
 import {effectMiddleware} from "./effects";
-import {Observable} from "rxjs/Observable";
 
 const enhancers = [
     applyMiddleware(...middleware),

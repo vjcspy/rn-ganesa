@@ -1,10 +1,7 @@
 import React, {Component} from "react";
 import {PropTypes} from "prop-types";
-import {View, Image, Dimensions, TouchableOpacity} from "react-native";
+import {View, Image, TouchableOpacity} from "react-native";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
-import {getPlatformValue, getStyleFromProps} from "../../utils/platform";
-
-const window = Dimensions.get("window");
 
 export default class BackgroundWrapper extends Component {
   renderChildren() {
@@ -23,7 +20,6 @@ export default class BackgroundWrapper extends Component {
   renderViewBackground() {
     const style = [
       styleWrapper.containerView,
-      getStyleFromProps(["paddingTop"], this.props)
     ];
     return <View style={{flex: 1}}>
       <Image style={{

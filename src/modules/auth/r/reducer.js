@@ -1,5 +1,5 @@
 import {makeRecordFactory} from "../../../utils/record-factory";
-import {createReducer} from "../../../redux/reducer";
+import {createReducer} from "../../../framework/redux/reducer";
 import {ACTION_SAVE_USER} from "./actions";
 
 const initState = makeRecordFactory({

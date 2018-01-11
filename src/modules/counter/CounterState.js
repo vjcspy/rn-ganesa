@@ -1,5 +1,5 @@
 import {makeRecordFactory} from "../../utils/record-factory";
-import {RESET_STATE} from "../session/SessionState";
+import {RESET_STATE} from "../../framework/native-base/session/SessionState";
 
 // Initial state
 const initialState = makeRecordFactory({

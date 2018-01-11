@@ -3,11 +3,11 @@ import {Button, View} from "react-native";
 import {connect} from "react-redux";
 import {outletRegisterStyles} from "../../styles/outlet-register";
 import {Label} from "native-base";
-import {translate} from "../../../../i18n/i18n";
 import {RegisterViewContainer} from "./Register";
 import {PosViewWrapper} from "../../components/PosViewWrapper";
 import {ProgressActions} from "../../R/progress-bar/actions";
 import {ObjectManager} from "../../core/framework/General/App/ObjectManager";
+import {translate} from "../../../../framework/i18n/index";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
