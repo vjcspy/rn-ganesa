@@ -35,6 +35,10 @@ class App {
         }
         this.getContainer().bind(name).toSelf();
     }
+    
+    bindTo(target: any, to: any): void {
+        this.getContainer().bind(target).to(to);
+    }
 }
 
 export const app = (): App => App.getInstance();

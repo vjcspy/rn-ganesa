@@ -45,7 +45,7 @@ class AuthLoginView extends React.Component<any, any> {
     }
     
     handlePressSignIn = () => {
-        this.props.dispatch(this.getAuthActions().loginWithEmail(this.state.email, this.state.password));
+        this.getAuthActions().loginWithEmail(this.state.email, this.state.password);
     };
     
     getAuthActions(): AuthActions {
@@ -55,7 +55,7 @@ class AuthLoginView extends React.Component<any, any> {
     signOut = () => {
         this.state.email    = "";
         this.state.password = "";
-        this.props.dispatch(this.getAuthActions().logout());
+        this.getAuthActions().logout()
     };
     
     render() {

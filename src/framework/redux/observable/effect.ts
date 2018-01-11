@@ -2,6 +2,7 @@ import {Map} from "immutable";
 import * as _ from "lodash";
 import {replaceModuleEffects} from "../effects";
 import {app} from "../../general/app";
+import {Error} from "../../general/error";
 
 export class EffectsModule {
     static $effects    = Map({});
@@ -14,7 +15,10 @@ export class EffectsModule {
         let observables     = _.map(keys, (key: string) => {
             return action$ => {
                 if (!EffectsModule.$subscriber.get(target)) {
-                    action$.subscribe(instance.action$);
+                    if (!instance.hasOwnProperty("actions$")) {
+                        throw new Error("check_effects_it_must_have_actions$_property");
+                    }
+                    action$.subscribe(instance.actions$);
                     EffectsModule.$subscriber = EffectsModule.$subscriber.set(target, true);
                 }
                 return instance[key];
