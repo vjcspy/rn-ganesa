@@ -35,11 +35,18 @@
   version "15.5.2"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.2.tgz#3c6b8dceb2906cc87fe4358e809f9d20c8d59be1"
 
-"@types/react-native@^0.51.9":
+"@types/react-native@*", "@types/react-native@^0.51.9":
   version "0.51.9"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.51.9.tgz#a2435957444aa3205387a162b72374578f303b43"
   dependencies:
     "@types/react" "*"
+
+"@types/react-navigation@^1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.0.26.tgz#e92f61e8462a5e11bd94254eac516ce01a10b4e2"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
 
 "@types/react-redux@^5.0.14":
   version "5.0.14"

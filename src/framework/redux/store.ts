@@ -23,11 +23,10 @@ const composeEnhancers = (
 const enhancer = composeEnhancers(...enhancers);
 
 // create the store
-const store = createStore(
+export const store    = createStore(
     createReducer(),
     enhancer
 );
-
 // Replace module splice reducer
 const reducerReplaced = {};
 
@@ -37,6 +36,3 @@ export function replaceModuleReducer(key, reducer) {
         reducerReplaced[key] = true;
     }
 }
-
-export default store;
-

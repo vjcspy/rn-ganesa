@@ -8,6 +8,8 @@ import {PosViewWrapper} from "../../components/PosViewWrapper";
 import {ProgressActions} from "../../R/progress-bar/actions";
 import {ObjectManager} from "../../core/framework/General/App/ObjectManager";
 import {translate} from "../../../../framework/i18n/index";
+import {app} from "../../../../framework/general/app";
+import {AuthActions} from "../../../auth/R/actions";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
@@ -15,8 +17,7 @@ class PosOutletView extends React.Component<any, any> {
     protected p = 0;
     
     protected test(): void {
-        this.p += 0.1;
-        this.getProgressAction().test();
+        app().resolve<AuthActions>(AuthActions).logout();
     }
     
     render() {

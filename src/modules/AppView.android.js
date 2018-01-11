@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {View, StatusBar, BackHandler} from "react-native";
 import NavigatorViewContainer from "../framework/native-base/navigator/NavigatorViewContainer";
-import store from "../framework/redux/store";
 import DeveloperMenu from "../framework/native-base/components/DeveloperMenu";
 
 import {NavigationActions} from "react-navigation";
+import {store} from "../framework/redux/store";
 
 class AppView extends Component {
   static displayName = "AppView";

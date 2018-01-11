@@ -1,5 +1,5 @@
 import {Provider} from "react-redux";
-import store from "./framework/redux/store";
+import {store} from "./framework/redux/store";
 import AppViewContainer from "./modules/AppViewContainer";
 import * as React from "react";
 import {StyleProvider, Root} from "native-base";

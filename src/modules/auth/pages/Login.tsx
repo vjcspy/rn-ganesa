@@ -8,6 +8,8 @@ import {Button, Text, Item, Input, Label} from "native-base";
 import accountStyle from "../styles/account";
 import {AuthActions} from "../R/actions";
 import {app} from "../../../framework/general/app";
+import {NavigationActions} from "react-navigation";
+import {RoutesActions} from "../../routes/R/actions";
 
 class AuthLoginView extends React.Component<any, any> {
     state = {

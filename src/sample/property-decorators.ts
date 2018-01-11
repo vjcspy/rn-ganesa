@@ -1,4 +1,4 @@
-import {Error} from "../../framework/general/error";
+import {Error} from "../framework/general/error";
 
 function log(name) {
     return function decorator(t, n, descriptor) {
