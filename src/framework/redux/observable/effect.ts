@@ -1,15 +1,17 @@
 import {Map} from "immutable";
 import * as _ from "lodash";
 import {replaceModuleEffects} from "../effects";
+import {app} from "../../general/app";
 
 export class EffectsModule {
     static $effects    = Map({});
     static $subscriber = Map();
     
-    static run(instance: any) {
-        let target      = Object.getPrototypeOf(instance);
-        const keys: any = EffectsModule.$effects.get(target);
-        let observables = _.map(keys, (key: string) => {
+    static run(className: any) {
+        const instance: any = app().resolve(className);
+        let target          = Object.getPrototypeOf(instance);
+        const keys: any     = EffectsModule.$effects.get(target);
+        let observables     = _.map(keys, (key: string) => {
             return action$ => {
                 if (!EffectsModule.$subscriber.get(target)) {
                     action$.subscribe(instance.action$);
