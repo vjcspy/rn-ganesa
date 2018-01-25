@@ -1,7 +1,6 @@
-import Promise from "bluebird";
 import HttpError from "standard-http-error";
-import {getConfiguration} from "../utils/configuration";
-import {getAuthenticationToken} from "../utils/authentication";
+import {getConfiguration} from "./configuration";
+import {getAuthenticationToken} from "./authentication";
 
 const EventEmitter = require("event-emitter");
 
@@ -63,7 +62,7 @@ export async function del(path, suppressRedBox) {
  */
 export async function request(method, path, body, suppressRedBox) {
   try {
-    const response = await sendRequest(method, path, body, suppressRedBox);
+    const response = await sendRequest(method, path, body);
     return handleResponse(
       path,
       response
