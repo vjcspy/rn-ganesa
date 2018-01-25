@@ -1,7 +1,7 @@
 import {NavigationActions} from "react-navigation";
 import {makeRecordFactory} from "../../../utils/record-factory";
-import AppNavigator from "./Navigator";
 import * as _ from "lodash";
+import AppNavigator from "../components/Navigator";
 
 export function NavigatorReducer(state, action) {
     // Initial state
