@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>1071601349373-eg9cjhqr1h0irio1jamhpbkt8psmstrb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1071601349373-eg9cjhqr1h0irio1jamhpbkt8psmstrb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCzXHfXqh0tHuNhlkeHo7ojx20OBtXnL6Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1071601349373</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vjcspy.Ganesa</string>
+	<key>PROJECT_ID</key>
+	<string>project-ganesa</string>
+	<key>STORAGE_BUCKET</key>
+	<string>project-ganesa.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1071601349373:ios:dec87b07012c10bd</string>
+	<key>DATABASE_URL</key>
+	<string>https://project-ganesa.firebaseio.com</string>
+</dict>
+</plist>
