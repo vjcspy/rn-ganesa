@@ -1,10 +1,10 @@
 import {Observable} from "rxjs";
 import {injectable} from "inversify";
-import {Effect} from "../../../framework/redux/observable/effect";
+import {Effect} from "../../../framework/redux-observable/effect";
 import {AuthActions} from "./actions";
 import {AuthService} from "./service";
 import {AppActions} from "../../../framework/redux/actions";
-import {Actions} from "../../../framework/redux/observable/actions";
+import {Actions} from "../../../framework/redux-observable/actions";
 
 @injectable()
 export class AuthEffects {

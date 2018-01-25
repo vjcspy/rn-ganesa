@@ -1,9 +1,9 @@
 import {injectable} from "inversify";
-import {app} from "../../general/app";
+import {app} from "../general/app";
 import {Subject} from "rxjs/Subject";
 import "rxjs";
 import * as _ from "lodash";
-import {Error} from "../../general/error";
+import {Error} from "../general/error";
 
 @injectable()
 class ActionsObservable {

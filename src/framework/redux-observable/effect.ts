@@ -1,8 +1,8 @@
 import {Map} from "immutable";
 import * as _ from "lodash";
-import {replaceModuleEffects} from "../effects";
-import {app} from "../../general/app";
-import {Error} from "../../general/error";
+import {replaceModuleEffects} from "../redux/effects";
+import {app} from "../general/app";
+import {Error} from "../general/error";
 
 export class EffectsModule {
     static $effects    = Map({});

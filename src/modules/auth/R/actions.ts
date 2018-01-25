@@ -1,6 +1,6 @@
 import {Action} from "redux";
 import {injectable} from "inversify";
-import {Store} from "../../../framework/redux/observable/store";
+import {Store} from "../../../framework/redux-observable/store";
 
 @injectable()
 export class AuthActions {

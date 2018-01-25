@@ -1,8 +1,8 @@
 import {Observable} from "rxjs/Observable";
 import {injectable} from "inversify";
-import {app} from "../../general/app";
+import {app} from "../general/app";
 import "rxjs";
-import {store} from "../store";
+import {store} from "../redux/store";
 
 @injectable()
 export class Store<T> {

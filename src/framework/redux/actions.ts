@@ -1,7 +1,7 @@
 import {Action} from "redux";
 import {injectable} from "inversify";
 import {app} from "../general/app";
-import {Store} from "./observable/store";
+import {Store} from "../redux-observable/store";
 
 @injectable()
 export class AppActions {

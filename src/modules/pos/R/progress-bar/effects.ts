@@ -1,7 +1,7 @@
-import {Effect} from "../../../../framework/redux/observable/effect";
+import {Effect} from "../../../../framework/redux-observable/effect";
 import {Subject} from "rxjs/Subject";
 import {injectable} from "inversify";
-import {Actions} from "../../../../framework/redux/observable/actions";
+import {Actions} from "../../../../framework/redux-observable/actions";
 
 @injectable()
 export class ProgressBarEffect {
