@@ -51,7 +51,9 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 android
+
 /ios/build/
+/ios/Pods/
 
 # TypeScript
 #
@@ -62,3 +64,4 @@ lib/
 .jest/# TypeScript
 # Jest
 .jest/
+
