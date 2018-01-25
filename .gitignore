@@ -24,7 +24,6 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
@@ -53,11 +52,6 @@ buck-out/
 */fastlane/screenshots
 android
 /ios/build/
-/ios/Ganesa-tvOSTests/
-/ios/Ganesa-tvOS/
-/ios/Ganesa/
-/ios/Ganesa.xcodeproj/
-/ios/GanesaTests/
 
 # TypeScript
 #
