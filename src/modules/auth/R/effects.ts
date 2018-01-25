@@ -3,16 +3,16 @@ import {injectable} from "inversify";
 import {Effect} from "../../../framework/redux-observable/effect";
 import {AuthActions} from "./actions";
 import {AuthService} from "./service";
-import {AppActions} from "../../../framework/redux/actions";
 import {Actions} from "../../../framework/redux-observable/actions";
+import {CoreActions} from "../../core/R/actions";
 
 @injectable()
 export class AuthEffects {
-    
+
     constructor(protected authActions: AuthActions, protected authService: AuthService, protected actions$: Actions) {
-    
+
     }
-    
+
     @Effect() login = this.actions$.ofType(AuthActions.ACTION_LOGIN)
                           .switchMap((action) => {
                               return Observable.fromPromise(this.authService.login(
@@ -25,11 +25,11 @@ export class AuthEffects {
                           .catch(err => {
                               return Observable.of(this.authActions.afterLogin(false, {err}, false));
                           });
-    
-    @Effect() userStateChange = this.actions$.ofType(AppActions.ACTION_APP_DID_MOUNT)
+
+    @Effect() userStateChange = this.actions$.ofType(CoreActions.ACTION_APP_DID_MOUNT)
                                     .switchMap(() => this.authService.onUserChange()
                                                          .map(user => this.authActions.userChange(user, false)));
-    
+
     @Effect() saveUserData = this.actions$.ofType(AuthActions.ACTION_USER_CHANGE)
                                  .map((action) => {
                                      const user = action.payload["user"];
@@ -37,7 +37,7 @@ export class AuthEffects {
                                          this.authActions.saveUser(user, false) :
                                          this.authActions.saveUser(null, false);
                                  });
-    
+
     @Effect() logout = this.actions$.ofType(AuthActions.ACTION_LOGOUT)
                            .switchMap(() => Observable.fromPromise(this.authService.logout())
                                                       .map(() => this.authActions.afterLogout(true, {}, false)))
