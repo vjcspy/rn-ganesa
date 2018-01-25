@@ -1,7 +1,15 @@
 import {combineReducers} from "redux";
 
-const appReducers = {};
+const appReducer = (state = {
+    tick: 1
+}, action) => {
+    return state;
+}
+
+const appReducers = {
+    app: appReducer
+};
 
 export function createReducer(asyncReducers = {}) {
-    return combineReducers(<any>Object.assign({}, appReducers, asyncReducers));
+    return combineReducers(Object.assign(appReducers, asyncReducers));
 }

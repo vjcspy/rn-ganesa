@@ -2,6 +2,7 @@ import {NavigationActions} from "react-navigation";
 import {makeRecordFactory} from "../../../utils/record-factory";
 import * as _ from "lodash";
 import AppNavigator from "../components/Navigator";
+import {createReducer} from "../../../framework/redux/reducer";
 
 export function NavigatorReducer(state, action) {
     // Initial state
@@ -17,3 +18,7 @@ export function NavigatorReducer(state, action) {
 
     return state;
 }
+
+export const routesModuleReducer = createReducer({
+    navigatorState: NavigatorReducer,
+});
