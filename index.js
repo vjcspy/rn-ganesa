@@ -1,1 +1,1 @@
-import "./lib/Ganesa";
+import "./lib/platforms/react-native/index";
