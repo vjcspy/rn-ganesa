@@ -17,7 +17,6 @@ export const outletRegisterStyles = StyleSheet.create({
         alignItems: "center"
     },
     registerContainer: {
-        marginTop: 30,
-        ...StyleDebug.view()
+        marginTop: 30
     }
 });

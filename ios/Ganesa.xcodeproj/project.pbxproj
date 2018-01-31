@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -22,6 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		1559A7F49754424E8D0934BC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AC2B98EED9455EB7444388 /* libz.tbd */; };
 		16E321F74FB8468097155CF5 /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD424B4CF2647B8A47EE468 /* libRNI18n.a */; };
 		1E09CFB256970A172A4A94EF /* libPods-Ganesa-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0C8BCBE83F67808DD929AC /* libPods-Ganesa-tvOS.a */; };
 		1E448DE14E8F4EF2B60510E1 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8493BE44DA84CD690549492 /* libRNFirebase.a */; };
@@ -40,6 +42,7 @@
 		374FD8FBC1F51545BD6A38A2 /* libPods-GanesaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EB4AAD911195CC28188E04 /* libPods-GanesaTests.a */; };
 		48560EF0C158446990F3E055 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E03577967F27484C832A8942 /* rubicon-icon-font.ttf */; };
 		4AF633CF08BF4D36B7BE7C62 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A273FEADA7AE444B85E1B287 /* Roboto_medium.ttf */; };
+		5701E70000674E0A9BF9A213 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 401E482490254F70AB20F7D9 /* libc++.tbd */; };
 		5B51E80403F64F458E981EC2 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C697151DE6B847ABB1F35A57 /* Feather.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		61E6DEDA175A4FCAB069F8CD /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89E6D7E363154285A9CAAE0C /* MaterialCommunityIcons.ttf */; };
@@ -47,6 +50,7 @@
 		6BA0653BB31A48D0A01FBE7C /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E0D9925B57C422A9842E329 /* SimpleLineIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		88EAB788608842D1BA860F68 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87AAA698954FA6A3CE5921 /* libRNVectorIcons.a */; };
+		9D55E184943042658C0BF44B /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F52FA8FEAF4E5280140F04 /* libRealmReact.a */; };
 		A07A7ACAEC9E4A27A93DA522 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54B6A446C94349FCA9E646FE /* EvilIcons.ttf */; };
 		A47BAC7208174F83B6A3397B /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 918CCF5795B64815A365615A /* Foundation.ttf */; };
 		AB3FD9B3999C432085DB55C8 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FF00717DD55492F824676F0 /* Ionicons.ttf */; };
@@ -348,6 +352,13 @@
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
 		};
+		F5CBAE092022FB7B00928AE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8103F19E65524552AF9467DB /* RealmReact.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F60690131CA2766F0003FB26;
+			remoteInfo = RealmReact;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -380,13 +391,16 @@
 		2D02E4901E0B4A5D006451C7 /* Ganesa-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ganesa-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		304631C7FAF744AEB5CB3ABF /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		364635D0F21589D24FF17AE3 /* Pods-GanesaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GanesaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GanesaTests/Pods-GanesaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		401E482490254F70AB20F7D9 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		4DF3D20C61CD4BD6A8CE153C /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		4ED242C4CE4C08CEEE384D66 /* Pods-Ganesa-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ganesa-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ganesa-tvOSTests/Pods-Ganesa-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		54B6A446C94349FCA9E646FE /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		57AC2B98EED9455EB7444388 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6CC0102CFAACFE979C4195BE /* Pods-Ganesa-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ganesa-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ganesa-tvOSTests/Pods-Ganesa-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7CA59A155791680AE02521C0 /* Pods-GanesaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GanesaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GanesaTests/Pods-GanesaTests.release.xcconfig"; sourceTree = "<group>"; };
+		8103F19E65524552AF9467DB /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		89E6D7E363154285A9CAAE0C /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		8DF82E91B8B74CB5AFBEDA9F /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
@@ -406,6 +420,7 @@
 		DE9684FAAF9C42C18B463670 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 		DF6D96CE576E98FABBE28691 /* Pods-Ganesa-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ganesa-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ganesa-tvOS/Pods-Ganesa-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E03577967F27484C832A8942 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		E9F52FA8FEAF4E5280140F04 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
 		F5A6F6E22019E2740052B977 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5D145509B01453DAF9A9A6C /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		F862D7B675746B57FA232285 /* Pods-Ganesa-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ganesa-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ganesa-tvOS/Pods-Ganesa-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -442,6 +457,9 @@
 				16E321F74FB8468097155CF5 /* libRNI18n.a in Frameworks */,
 				88EAB788608842D1BA860F68 /* libRNVectorIcons.a in Frameworks */,
 				DC159A546062D10F0DA85E06 /* libPods-Ganesa.a in Frameworks */,
+				9D55E184943042658C0BF44B /* libRealmReact.a in Frameworks */,
+				5701E70000674E0A9BF9A213 /* libc++.tbd in Frameworks */,
+				1559A7F49754424E8D0934BC /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +676,7 @@
 				4DF3D20C61CD4BD6A8CE153C /* RNFirebase.xcodeproj */,
 				DE9684FAAF9C42C18B463670 /* RNI18n.xcodeproj */,
 				D71BE048262345B7864C9ADF /* RNVectorIcons.xcodeproj */,
+				8103F19E65524552AF9467DB /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -707,6 +726,8 @@
 				9B0C8BCBE83F67808DD929AC /* libPods-Ganesa-tvOS.a */,
 				8E3B35951DEE42A14F6C927B /* libPods-Ganesa-tvOSTests.a */,
 				B6EB4AAD911195CC28188E04 /* libPods-GanesaTests.a */,
+				401E482490254F70AB20F7D9 /* libc++.tbd */,
+				57AC2B98EED9455EB7444388 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -726,6 +747,7 @@
 				D8493BE44DA84CD690549492 /* libRNFirebase.a */,
 				BBD424B4CF2647B8A47EE468 /* libRNI18n.a */,
 				1B87AAA698954FA6A3CE5921 /* libRNVectorIcons.a */,
+				E9F52FA8FEAF4E5280140F04 /* libRealmReact.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -751,6 +773,14 @@
 			isa = PBXGroup;
 			children = (
 				F5A6F6D82019E2100052B977 /* libRNFirebase.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5CBAE062022FB7B00928AE9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5CBAE0A2022FB7B00928AE9 /* libRealmReact.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -928,6 +958,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = F5CBAE062022FB7B00928AE9 /* Products */;
+					ProjectRef = 8103F19E65524552AF9467DB /* RealmReact.xcodeproj */;
 				},
 				{
 					ProductGroup = F5A6F6D42019E2100052B977 /* Products */;
@@ -1224,6 +1258,13 @@
 			fileType = archive.ar;
 			path = "libprivatedata-tvOS.a";
 			remoteRef = F5A6F74D2019E43C0052B977 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F5CBAE0A2022FB7B00928AE9 /* libRealmReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRealmReact.a;
+			remoteRef = F5CBAE092022FB7B00928AE9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1580,12 +1621,14 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = GanesaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1611,12 +1654,14 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = GanesaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1644,6 +1689,7 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = Ganesa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1672,6 +1718,7 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = Ganesa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1706,11 +1753,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = "Ganesa-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1746,11 +1795,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-i18n/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/realm/src/**",
 				);
 				INFOPLIST_FILE = "Ganesa-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1787,6 +1838,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Ganesa-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1812,6 +1864,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

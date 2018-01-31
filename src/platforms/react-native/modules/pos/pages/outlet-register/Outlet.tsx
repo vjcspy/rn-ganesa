@@ -8,49 +8,52 @@ import {PosViewWrapper} from "../../components/PosViewWrapper";
 import {ProgressActions} from "../../../../../../framework/modules/pos/R/progress-bar/actions";
 import {translate} from "../../../../../../framework/i18n";
 import {app} from "../../../../../../framework/general/app";
+import {countCar, insertCar} from "../../../../database/test/func";
+import {DB} from "../../../../database";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
 
     protected p = 0;
 
-    protected test(): void {
-        let i = 0;
-        setInterval(() => {
-            if (i > 1) {
-                i = 0;
-            } else {
-                i += 0.1;
+    protected test(work: string) {
+        setTimeout(() => {
+            switch (work) {
+                case "insertCar":
+                    setTimeout(() => insertCar(500));
+                    setTimeout(() => insertCar(500));
+                    setTimeout(() => insertCar(500));
+                    setTimeout(() => insertCar(500));
+                    break;
+                case "countCar":
+                    countCar();
+                    break;
+                case "deleteDB":
+                    DB.deleteDB();
+                    break;
+                default:
+                    console.log('no support');
             }
-            app().resolve<ProgressActions>(ProgressActions).updateProgressBar(i);
-        }, 500);
+        });
     }
 
     render() {
         return <PosViewWrapper>
             <View style={outletRegisterStyles.container}>
-                <View style={outletRegisterStyles.outletForm}>
-                    <View style={{flex: 113}}/>
 
-                    <View style={{flex: 1143, flexDirection: "column"}}>
+                <View style={outletRegisterStyles.textHeader}>
+                    <Label style={{
+                        fontSize: 32,
+                        color: "#555555"
+                    }}>{translate("select_register")}</Label>
+                </View>
 
-                        <View style={outletRegisterStyles.textHeader}>
-                            <Label style={{
-                                fontSize: 32,
-                                color: "#555555"
-                            }}>{translate("select_register")}</Label>
-                        </View>
-
-                        <View style={{backgroundColor: "#555555", height: 1}}/>
-
-                        <View style={outletRegisterStyles.registerContainer}>
-                            <RegisterViewContainer></RegisterViewContainer>
-                            <Button title="Test" onPress={() => this.test()}/>
-                        </View>
-
+                <View style={outletRegisterStyles.registerContainer}>
+                    <View>
+                        <Button title="Test" onPress={() => this.test('insertCar')}/>
+                        <Button title="Number Of car" onPress={() => this.test('countCar')}/>
+                        <Button title="Delete DB" onPress={() => this.test('deleteDB')}/>
                     </View>
-
-                    <View style={{flex: 113}}/>
                 </View>
             </View>
         </PosViewWrapper>;
