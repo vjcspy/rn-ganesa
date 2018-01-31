@@ -62,7 +62,7 @@ class AuthLoginView extends React.Component<any, any> {
     
     render() {
         return (
-            <BackgroundWrapper background={require("../../../../images/ec-background.jpeg")}>
+            <BackgroundWrapper background={require("../../../../../images/ec-background.jpeg")}>
                 <View style={accountStyle.loginContainer}>
                     <View style={accountStyle.formContent}>
                         

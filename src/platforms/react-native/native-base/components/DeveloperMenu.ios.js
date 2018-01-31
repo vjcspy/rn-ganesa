@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import * as snapshot from "../../../utils/snapshot";
+import * as snapshot from "../../utils/snapshot";
 
 import {
   TouchableOpacity,
