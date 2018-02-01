@@ -6,8 +6,8 @@ import {Label} from "native-base";
 import {RegisterViewContainer} from "./Register";
 import {PosViewWrapper} from "../../components/PosViewWrapper";
 import {ProgressActions} from "../../../../../../framework/modules/pos/R/progress-bar/actions";
-import {ObjectManager} from "../../core/framework/General/App/ObjectManager";
 import {translate} from "../../../../../../framework/i18n";
+import {app} from "../../../../../../framework/general/app";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
@@ -54,5 +54,5 @@ class PosOutletView extends React.Component<any, any> {
 
 export const PosOutletViewContainer = connect(
     state => ({}),
-    dispatch => ({progressActions: ObjectManager.resolve(ProgressActions, {dispatch})})
+    dispatch => ({progressActions: app().resolve(ProgressActions)})
 )(PosOutletView);

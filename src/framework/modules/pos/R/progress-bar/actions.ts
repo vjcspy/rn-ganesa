@@ -1,12 +1,13 @@
 import {Action} from "redux";
 import {injectable} from "inversify";
+import {Store} from "../../../../redux-observable/store";
 
 @injectable()
 export class ProgressActions {
     static ACTION_UPDATE_PROGRESS_BAR = "ACTION_UPDATE_PROGRESS_BAR";
     static ACTION_RESET_PROGRESS_BAR  = "ACTION_RESET_PROGRESS_BAR";
 
-    constructor(public store$: any) {
+    constructor(public store$: Store<any>) {
     }
 
     updateProgressBar(value, dispatch: boolean = true): Action {
