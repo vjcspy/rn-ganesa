@@ -12,6 +12,6 @@ function accountStateReducer(state = accountStateRecordFactory(), action) {
     }
 }
 
-export const authModuleReducer = createReducer({
+export const accountModuleReducer = createReducer({
     account: accountStateReducer
 });

@@ -62,7 +62,7 @@ class AuthLoginView extends React.Component<any, any> {
 
     render() {
         return (
-            <BackgroundWrapper background={require("../../../../../images/ec-background.jpeg")}>
+            <BackgroundWrapper background={require("../../../../../../images/ec-background.jpeg")}>
                 <View style={accountStyle.loginContainer}>
                     <View style={accountStyle.formContent}>
 
@@ -92,8 +92,8 @@ class AuthLoginView extends React.Component<any, any> {
                                         <Input onChangeText={(email) => {
                                             this.setState({email});
                                         }}
-                                               defaultValue={this.props.auth.user ? this.props.auth.user["email"] : ""}
-                                               editable={this.props.auth.user === null}
+                                               defaultValue={this.props.account.user ? this.props.account.user["email"] : ""}
+                                               editable={this.props.account.user === null}
                                                keyboardType="email-address"
                                                autoCorrect={false} autoCapitalize="none"/>
                                     </Item>
@@ -106,7 +106,7 @@ class AuthLoginView extends React.Component<any, any> {
                                             this.setState({password});
                                         }}
                                                defaultValue=""
-                                               editable={this.props.auth.user === null}
+                                               editable={this.props.account.user === null}
                                                secureTextEntry={true}
                                                autoCorrect={false}
                                                autoCapitalize="none"/>
@@ -124,7 +124,7 @@ class AuthLoginView extends React.Component<any, any> {
                                     top: this.state.animation.loginPositionTop
                                 }}>
                                     <Button light style={accountStyle.accountContentButton}
-                                            disabled={this.props.auth.user === null}
+                                            disabled={this.props.account.user === null}
                                             onPress={this.signOut}>
                                         <Text style={accountStyle.accountContentTextButton}>Sign Out </Text>
                                     </Button>
@@ -161,7 +161,7 @@ class AuthLoginView extends React.Component<any, any> {
 
 export const AuthLoginContainer = connect(
     state => ({
-        auth: state["auth"]
+        account: state["account"]
     }),
     dispatch => ({
         dispatch
@@ -170,5 +170,5 @@ export const AuthLoginContainer = connect(
 
 AuthLoginView["propTypes"] = {
     dispatch: PropTypes.any.isRequired,
-    auth: PropTypes.any.isRequired
+    account: PropTypes.any.isRequired
 };

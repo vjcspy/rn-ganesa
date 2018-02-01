@@ -18,27 +18,27 @@ export class RoutesEffects {
 
     @Effect() checkLogin = this.actions$
                                .ofType(AccountActions.ACTION_SAVE_USER)
-                               .withLatestFrom(this.store$.select("auth"))
+                               .withLatestFrom(this.store$.select("account"))
                                .withLatestFrom(this.store$.select("navigatorState"), (z, z1) => [...z, z1])
                                .filter((z: any) => {
-                                   const authState: AccountState         = <any>z[1];
+                                   const accountState: AccountState         = <any>z[1];
                                    const navigatorState: NavigationState = <any>z[2];
 
                                    const currentRouteName = navigatorState.routes[navigatorState.index]['routeName'];
 
-                                   return this.routesService.isAuthorizePage(currentRouteName) === !!authState.user;
+                                   return this.routesService.isAuthorizePage(currentRouteName) === !!accountState.user;
 
                                })
                                .map((z: any) => {
-                                   const authState: AccountState         = <any>z[1];
+                                   const accountState: AccountState         = <any>z[1];
                                    const navigatorState: NavigationState = <any>z[2];
 
                                    const currentRouteName = navigatorState.routes[navigatorState.index]['routeName'];
-                                   if (this.routesService.isAuthorizePage(currentRouteName) && !!authState.user) {
+                                   if (this.routesService.isAuthorizePage(currentRouteName) && !!accountState.user) {
                                        return this.routesActions.navigate("outlet", null, null, false);
                                    }
 
-                                   if (!this.routesService.isAuthorizePage(currentRouteName) && !authState.user) {
+                                   if (!this.routesService.isAuthorizePage(currentRouteName) && !accountState.user) {
                                        return this.routesActions.navigate("login", null, null, false);
                                    }
                                });
