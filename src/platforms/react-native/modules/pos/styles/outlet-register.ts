@@ -6,7 +6,6 @@ const deviceWidth  = Dimensions.get("window").width;
 
 export const outletRegisterStyles = StyleSheet.create({
     container: {
-        flex: 1,
         marginTop: 67,
         marginBottom: 67
     },

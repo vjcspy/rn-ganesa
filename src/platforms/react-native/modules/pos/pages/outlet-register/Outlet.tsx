@@ -15,6 +15,15 @@ class PosOutletView extends React.Component<any, any> {
     protected p = 0;
 
     protected test(): void {
+        let i = 0;
+        setInterval(() => {
+            if (i > 1) {
+                i = 0;
+            } else {
+                i += 0.1;
+            }
+            app().resolve<ProgressActions>(ProgressActions).updateProgressBar(i);
+        }, 500);
     }
 
     render() {
