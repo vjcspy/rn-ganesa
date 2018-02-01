@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {View, StatusBar, BackHandler} from "react-native";
 import NavigatorViewContainer from "./native-base/navigator/NavigatorViewContainer";
-import DeveloperMenu from "./native-base/components/DeveloperMenu";
+import DeveloperMenu from "./modules/core/components/DeveloperMenu";
 
 import {NavigationActions} from "react-navigation";
 import {store} from "../../framework/redux/store";
