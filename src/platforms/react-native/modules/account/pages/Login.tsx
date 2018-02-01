@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import {connect} from "react-redux";
-import {View, Animated} from "react-native";
+import {View, Animated, KeyboardAvoidingView} from "react-native";
 import BackgroundWrapper from "../../core/components/partials/BackgroundWrapper";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {Button, Text, Item, Input, Label} from "native-base";
@@ -63,7 +63,7 @@ class AuthLoginView extends React.Component<any, any> {
     render() {
         return (
             <BackgroundWrapper background={require("../../../../../../images/ec-background.jpeg")}>
-                <View style={accountStyle.loginContainer}>
+                <KeyboardAvoidingView style={accountStyle.loginContainer} behavior="padding">
                     <View style={accountStyle.formContent}>
 
                         {/*social login*/}
@@ -153,7 +153,7 @@ class AuthLoginView extends React.Component<any, any> {
                         </View>
 
                     </View>
-                </View>
+                </KeyboardAvoidingView>
             </BackgroundWrapper>
         );
     }
