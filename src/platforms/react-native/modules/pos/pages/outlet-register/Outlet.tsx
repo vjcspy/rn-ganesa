@@ -5,7 +5,7 @@ import {outletRegisterStyles} from "../../styles/outlet-register";
 import {Label} from "native-base";
 import {RegisterViewContainer} from "./Register";
 import {PosViewWrapper} from "../../components/PosViewWrapper";
-import {ProgressActions} from "../../R/progress-bar/actions";
+import {ProgressActions} from "../../../../../../framework/modules/pos/R/progress-bar/actions";
 import {ObjectManager} from "../../core/framework/General/App/ObjectManager";
 import {translate} from "../../../../../../framework/i18n";
 
