@@ -55,7 +55,7 @@ class PosOutletView extends React.Component<any, any> {
                     <Label style={{
                         fontSize: 32,
                         color: "#555555"
-                    }}>{translate("select_register")}</Label>
+                    }}>{translate("outlet_page")}</Label>
                 </View>
 
                 <View style={outletRegisterStyles.registerContainer}>
