@@ -1,4 +1,4 @@
-import {Container} from "inversify";
+import {Container, injectable} from "inversify";
 import {Map} from "immutable";
 import {Error} from "./error";
 import "reflect-metadata";
@@ -42,3 +42,4 @@ class App {
 }
 
 export const app = (): App => App.getInstance();
+export const Injectable = injectable;
