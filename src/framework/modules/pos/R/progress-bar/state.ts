@@ -10,6 +10,6 @@ export interface ProgressStateRecord extends TypedRecord<any>, ProgressState {}
 export const progressStateFactory = makeTypedFactory<ProgressState, ProgressStateRecord>(
     {
         value: 0,
-        duration: 100
+        duration: 500
     }
 );

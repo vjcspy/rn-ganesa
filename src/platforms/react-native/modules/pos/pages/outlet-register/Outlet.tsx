@@ -14,7 +14,7 @@ import {DB} from "../../../../database";
 class PosOutletView extends React.Component<any, any> {
     state = {};
 
-    protected p = 0;
+    protected progressInteval;
 
     protected test(work: string) {
         setTimeout(() => {
@@ -30,6 +30,16 @@ class PosOutletView extends React.Component<any, any> {
                     break;
                 case "deleteDB":
                     DB.deleteDB();
+                    break;
+                case "progress":
+                    if (typeof this.progressInteval !== 'undefined') {
+                        clearInterval(this.progressInteval);
+                    }
+                    let _p               = 0;
+                    this.progressInteval = setInterval(() => {
+                        _p += 0.1;
+                        app().resolve<ProgressActions>(ProgressActions).updateProgressBar(_p);
+                    }, 500);
                     break;
                 default:
                     console.log('no support');
@@ -50,6 +60,7 @@ class PosOutletView extends React.Component<any, any> {
 
                 <View style={outletRegisterStyles.registerContainer}>
                     <View>
+                        <Button title="Test Progress" onPress={() => this.test('progress')}/>
                         <Button title="Test" onPress={() => this.test('insertCar')}/>
                         <Button title="Number Of car" onPress={() => this.test('countCar')}/>
                         <Button title="Delete DB" onPress={() => this.test('deleteDB')}/>
