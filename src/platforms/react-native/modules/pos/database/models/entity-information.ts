@@ -1,5 +1,5 @@
 import {EntityInformation} from "../../../../../../framework/modules/pos/database/xretail/db/entity-information";
-import {AbstractEntityRealmDatabase} from "../../../../database";
+import {AbstractEntityRealmDatabase} from "../../../../realm";
 
 export class EntityInformationRealm extends AbstractEntityRealmDatabase {
     config = {

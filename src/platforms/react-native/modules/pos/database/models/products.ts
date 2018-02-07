@@ -1,5 +1,5 @@
 import {ProductDB} from "../../../../../../framework/modules/pos/database/xretail/db/product";
-import {AbstractEntityRealmDatabase} from "../../../../database";
+import {AbstractEntityRealmDatabase} from "../../../../realm";
 
 export class ProductsRealm extends AbstractEntityRealmDatabase {
     config = {

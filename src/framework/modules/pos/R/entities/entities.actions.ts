@@ -189,8 +189,8 @@ export class PosEntitiesActions {
      */
     static ACTION_PULL_ENTITY_FAILED = 'ACTION_PULL_ENTITY_FAILED';
 
-    pullEntityFailed(entityCode, dispatch: boolean = true): Action {
-        const action = {type: PosEntitiesActions.ACTION_PULL_ENTITY_FAILED, payload: {entityCode}};
+    pullEntityFailed(entityCode, e, dispatch: boolean = true): Action {
+        const action = {type: PosEntitiesActions.ACTION_PULL_ENTITY_FAILED, payload: {entityCode, e}};
 
         if (dispatch === true) {
             this.store$.dispatch(action);

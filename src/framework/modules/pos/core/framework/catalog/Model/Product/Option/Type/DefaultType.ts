@@ -2,7 +2,7 @@ import {DataObject} from "../../../../../General/DataObject";
 import {Option} from "../../Option";
 import {Product} from "../../../Product";
 export class DefaultType extends DataObject {
-    // Chinh la option trong database
+    // Chinh la option trong realm
     protected _option: Option;
     protected _product: Product;
 

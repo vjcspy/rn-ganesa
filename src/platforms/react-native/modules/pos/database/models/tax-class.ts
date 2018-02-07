@@ -1,4 +1,4 @@
-import {AbstractEntityRealmDatabase} from "../../../../database";
+import {AbstractEntityRealmDatabase} from "../../../../realm";
 import {TaxClassDB} from "../../../../../../framework/modules/pos/database/xretail/db/tax-class";
 
 export class TaxClassRealm extends AbstractEntityRealmDatabase {

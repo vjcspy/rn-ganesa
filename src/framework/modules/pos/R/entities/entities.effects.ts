@@ -17,14 +17,14 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class PosEntitiesEffects {
-    constructor(private action$: Actions,
+    constructor(private actions$: Actions,
                 private store: Store<any>,
                 private rootActions: RootActions,
                 private posEntityService: PosEntitiesService,
                 private entitiesActions: PosEntitiesActions) {
     }
 
-    @Effect() initEntityBeforeGetFromSV$ = this.action$
+    @Effect() initEntityBeforeGetFromSV$ = this.actions$
                                                .ofType(
                                                    PosEntitiesActions.ACTION_INIT_ENTITY_FROM_LOCAL_DB,
                                                    PosEntitiesActions.ACTION_ENTITY_IN_DB_NOT_VALID,
@@ -37,17 +37,18 @@ export class PosEntitiesEffects {
                                                })
                                                .flatMap(([action, generalState, entitiesState]) => {
                                                    const entityCode = (entitiesState[(action as Action).payload['entityCode']] as Entity).entityCode;
+
                                                    return Observable.fromPromise(this.posEntityService.getStateCurrentEntityDb(<any>generalState, entitiesState[entityCode]))
                                                                     .flatMap(() => Observable.fromPromise(this.posEntityService.getDataFromLocalDB([entityCode]))
                                                                                              .map((mes: GeneralMessage) => {
                                                                                                  return this.entitiesActions.getEntityDataFromDB(entityCode, mes.data[entityCode], false);
-                                                                                             }))
-                                                                    .catch((e: GeneralException) => {
-                                                                        return Observable.of(this.rootActions.error(e.getMessage(), e, false));
-                                                                    });
+                                                                                             })
+                                                                                             .catch((e: GeneralException) => Observable.of(this.rootActions.error(e.getMessage(), e, false)))
+                                                                    )
+                                                                    .catch((e: GeneralException) => Observable.of(this.rootActions.error(e.getMessage(), e, false)));
                                                });
 
-    @Effect() pullEntityDataFromServer$ = this.action$
+    @Effect() pullEntityDataFromServer$ = this.actions$
                                               .ofType(
                                                   // Trigger từ actions
                                                   PosEntitiesActions.ACTION_PULL_ENTITY_DATA_FROM_SERVER,
@@ -87,7 +88,7 @@ export class PosEntitiesEffects {
                                                   }
                                               });
 
-    @Effect() pullEntityNextPage$ = this.action$
+    @Effect() pullEntityNextPage$ = this.actions$
                                         .ofType(
                                             PosEntitiesActions.ACTION_PULL_ENTITY_NEXT_PAGE,
                                             PosEntitiesActions.ACTION_PULL_CANCEL
@@ -119,7 +120,7 @@ export class PosEntitiesEffects {
                                                                                  this.entitiesActions.pullEntitySuccess(action.payload['entityCode'], false) :
                                                                                  this.entitiesActions.pullEntityPageSuccess(action.payload.entityCode, pullData.data['items'], pullData.data['additionData'], false);
                                                                          })
-                                                                         .catch(() => Observable.of(this.entitiesActions.pullEntityFailed(action.payload.entityCode, false))
+                                                                         .catch((e) => Observable.of(this.entitiesActions.pullEntityFailed(action.payload.entityCode, e, false))
                                                                          );
                                                     }
                                                 }

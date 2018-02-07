@@ -1,4 +1,5 @@
 import {combineReducers} from "redux";
+import * as _ from "lodash";
 
 const appReducer = (state = {
     tick: 1
@@ -16,7 +17,9 @@ export function createReducer(asyncReducers = {}) {
 
 export const mergeSliceReducers = (initialState: any, ...sliceReducer: any[]) => {
     return (state = initialState, action: any) => {
-        _.forEach(sliceReducer, (reducer: any) => {state = reducer(state, action);});
+        _.forEach(sliceReducer, (reducer: any) => {
+            state = reducer(state, action);
+        });
 
         return state;
     };

@@ -11,11 +11,11 @@ const deviceWidth = Dimensions.get("window").width;
 
 class ProgressBar extends React.Component<any, any> {
     animation: Animated.Value;
-    
+
     componentWillMount() {
         this.animation = new Animated.Value(this.props.progressBar.value);
     }
-    
+
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.progressBar.value !== this.props.progressBar.value) {
             Animated.timing(this.animation, {
@@ -24,18 +24,18 @@ class ProgressBar extends React.Component<any, any> {
             }).start();
         }
     }
-    
+
     protected isShowProgress(): boolean {
-        return this.props.progressBar.value > 0 && this.props.progressBar.value < 1;
+        return this.props.progressBar.value > 0 && this.props.progressBar.value <= 1;
     }
-    
+
     render() {
         const {height, barColor,} = this.props;
         const widthInterpolated   = this.animation.interpolate({
-                                                                   inputRange: [0, 1],
-                                                                   outputRange: ["0%", "100%"],
-                                                                   extrapolate: "clamp"
-                                                               });
+            inputRange: [0, 1],
+            outputRange: ["0%", "100%"],
+            extrapolate: "clamp"
+        });
         return <View style={{
             flexDirection: "row",
             position: "absolute",

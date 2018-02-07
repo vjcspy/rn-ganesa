@@ -6,6 +6,7 @@ import {Store} from "../../../../redux-observable/store";
 export class ProgressActions {
     static ACTION_UPDATE_PROGRESS_BAR = "ACTION_UPDATE_PROGRESS_BAR";
     static ACTION_RESET_PROGRESS_BAR  = "ACTION_RESET_PROGRESS_BAR";
+    static ACTION_DONE_PROGRESS_BAR   = "ACTION_DONE_PROGRESS_BAR";
 
     constructor(public store$: Store<any>) {
     }
@@ -22,6 +23,16 @@ export class ProgressActions {
 
     resetProgressBar(dispatch: boolean = true): Action {
         const action = {type: ProgressActions.ACTION_RESET_PROGRESS_BAR, payload: {}};
+
+        if (dispatch === true) {
+            this.store$.dispatch(action);
+        }
+
+        return action;
+    }
+
+    done(force: boolean = true, dispatch: boolean = true): Action {
+        const action = {type: ProgressActions.ACTION_DONE_PROGRESS_BAR, payload: {force}};
 
         if (dispatch === true) {
             this.store$.dispatch(action);

@@ -8,6 +8,8 @@ export const progressBarReducer: Reducer<ProgressStateRecord> = (state = progres
             return state.set('value', action.payload['value']);
         case ProgressActions.ACTION_RESET_PROGRESS_BAR:
             return progressStateFactory();
+        case ProgressActions.ACTION_DONE_PROGRESS_BAR:
+            return state.set('value', 1);
     }
     return state;
 };

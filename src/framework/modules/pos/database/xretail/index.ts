@@ -1,5 +1,6 @@
 import {EntityDatabaseInterface} from "../../../../database/typing";
 import {app, Injectable} from "../../../../general/app";
+import {RetailDB} from "../../../../../platforms/react-native/modules/pos/database";
 
 export interface RetailDBInterface {
     entityInformation: EntityDatabaseInterface;
@@ -9,7 +10,14 @@ export interface RetailDBInterface {
 
 @Injectable()
 export class DatabaseManager {
+    static $id = Symbol.for("RetailDB");
+
     getDbInstance(): RetailDBInterface {
-        return app().resolve(Symbol.for("RetailDB"));
+        try {
+            return app().resolve(DatabaseManager.$id);
+        } catch (e) {
+            console.log('can not resolve');
+            console.log(e);
+        }
     }
 }

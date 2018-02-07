@@ -11,23 +11,17 @@ export interface ModuleConfig {
 
 export class ModuleManager {
     static $modules = Map();
-    static booted   = false;
-    
+
     static register(config: ModuleConfig) {
         const exited = ModuleManager.$modules.get(config.name);
         if (!exited) {
-            ModuleManager.$modules = ModuleManager.$modules.set(config.name, config.boot);
+            ModuleManager.$modules = ModuleManager.$modules.set(config.name, true);
             _.forEach(config.services, (s) => app().register(s));
+            config.boot();
         }
     }
-    
+
     static boot(moduleConfigs: ModuleConfig[] = []) {
         _.forEach(moduleConfigs, (c) => ModuleManager.register(c));
-        
-        if (!ModuleManager.booted) {
-            ModuleManager.$modules.forEach((f: any) => f());
-        } else {
-            throw new Error("wtf, duplicate boot module");
-        }
     }
 }

@@ -1,5 +1,4 @@
 import * as Realm from 'realm';
-import {CarSchema} from "./sample/car";
 import {EntityDatabaseInterface} from "../../../framework/database/typing";
 import {GeneralMessage} from "../../../framework/modules/pos/core/framework/General/Typing/Message";
 import {DataObject} from "../../../framework/modules/pos/core/framework/General/DataObject";
@@ -8,7 +7,7 @@ import * as _ from 'lodash';
 export class RealmDB {
 
     static $config = {
-        schema: [CarSchema],
+        schema: [],
         path: Realm['default'].path
     };
 
@@ -18,7 +17,13 @@ export class RealmDB {
 
     static async run(callBack: (_realm) => void) {
         Realm.open(RealmDB.$config)
-             .then((realm) => callBack(realm))
+             .then((realm) => {
+                 try {
+                     callBack(realm);
+                 } catch (e) {
+                     console.log(e);
+                 }
+             })
              .catch((e) => console.log(e));
     }
 
@@ -46,24 +51,23 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
         return gData.isError !== true ? gData.data : [];
     }
 
-    bulkAdd(data: DataObject[], update?: boolean): Promise<GeneralMessage> {
+    bulkAdd(data: Object[], update?: boolean): Promise<GeneralMessage> {
         return new Promise((resolve, reject) => {
-            try {
-                RealmDB.run((realm) => {
-                    realm.write(() => {
-
+            RealmDB.run((realm) => {
+                realm.write(() => {
+                    try {
                         _.forEach(data, (d) => {
                             let i = {};
 
                             _.forEach(this.config['properties'], (p, key) => {
                                 if (p['json'] === true) {
                                     try {
-                                        i[key] = JSON.stringify(d.getData(key))
+                                        i[key] = JSON.stringify(d[key])
                                     } catch {
 
                                     }
                                 } else {
-                                    i[key] = d.getData(key);
+                                    i[key] = d[key];
                                 }
                             });
 
@@ -73,15 +77,16 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                         resolve({
                             isError: false
                         });
-                    });
+                    } catch (e) {
+                        reject({
+                            isError: true,
+                            message: "clear entity error",
+                            e
+                        });
+                    }
                 });
-            } catch (e) {
-                reject({
-                    isError: true,
-                    message: "clear entity error",
-                    e
-                });
-            }
+            });
+
         });
     }
 
@@ -131,7 +136,6 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                     try {
                         let allEntity = realm.objects(this.config['name']).filtered(where);
                         realm.delete(allEntity);
-
                         resolve({
                             isError: false
                         });
@@ -149,9 +153,9 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
 
     save(data: DataObject, update: boolean = true): Promise<any> {
         return new Promise((resolve, reject) => {
-            try {
-                RealmDB.run((realm) => {
-                    realm.write(() => {
+            RealmDB.run((realm) => {
+                realm.write(() => {
+                    try {
                         let i = {};
 
                         _.forEach(this.config['properties'], (p, key) => {
@@ -167,19 +171,19 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                         });
 
                         realm.create(this.config['name'], i, update === true);
-
                         resolve({
                             isError: false
                         });
-                    });
+                    } catch (e) {
+                        reject({
+                            isError: true,
+                            message: "clear entity error",
+                            e
+                        });
+                    }
                 });
-            } catch (e) {
-                reject({
-                    isError: true,
-                    message: "clear entity error",
-                    e
-                });
-            }
+            });
+
         });
     }
 
@@ -203,6 +207,6 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
     }
 
     factory() {
-        return Object.create(this);
+        return new DataObject();
     }
 }

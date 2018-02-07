@@ -9,13 +9,18 @@ import {PosEntitiesActions} from "./R/entities/entities.actions";
 import {PosPullActions} from "./R/entities/pull.actions";
 import {ApiManager} from "./services/api-manager";
 import {DatabaseManager} from "./database/xretail";
+import {PosEntitiesService} from "./R/entities/entities.service";
+import {PosEntitiesEffects} from "./R/entities/entities.effects";
+import {PosPullEffects} from "./R/entities/pull.effects";
 
 const name = "framework_pos";
 
-export function boot() {
 
+export function boot() {
     replaceModuleReducer('framework_pos', posReducer);
     EffectsModule.run(ProgressBarEffect);
+    EffectsModule.run(PosEntitiesEffects);
+    EffectsModule.run(PosPullEffects);
 }
 
 const services = [
@@ -26,9 +31,12 @@ const services = [
     ProgressBarEffect,
 
     PosGeneralActions,
-    PosEntitiesActions,
-    PosPullActions,
 
+    PosEntitiesActions,
+    PosEntitiesService,
+    PosEntitiesEffects,
+    PosPullActions,
+    PosPullEffects,
 ];
 
 
