@@ -10,7 +10,7 @@ export class ProductsRealm extends AbstractEntityRealmDatabase {
             sku: "string",
             name: "string",
             attribute_set_id: "string",
-            price: "string",
+            price: "string?",
             tier_prices: {
                 type: "string",
                 optional: true,

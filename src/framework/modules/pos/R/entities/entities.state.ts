@@ -54,7 +54,7 @@ export const posEntitiesStateFactory = makeTypedFactory<PosEntitiesState, PosEnt
                 typeId: "",
                 visibility: "",
                 status: 0,
-                productIds: "2"
+                productIds: ""
             },
             query: "",
             needRealTime: true,

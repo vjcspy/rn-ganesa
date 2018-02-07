@@ -125,7 +125,7 @@ export class PosEntitiesService {
                             try {
                                 await db[entity.entityCode].bulkAdd(items, true);
                             } catch (e) {
-                                console.log("add entities to cache failed" + entity.entityCode + ", try to put again");
+                                console.log("add entities to cache failed " + entity.entityCode + ", try to put again");
                             }
 
                             const additionData = {

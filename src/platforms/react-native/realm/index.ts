@@ -57,21 +57,25 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                 realm.write(() => {
                     try {
                         _.forEach(data, (d) => {
-                            let i = {};
+                            try {
+                                let i = {};
 
-                            _.forEach(this.config['properties'], (p, key) => {
-                                if (p['json'] === true) {
-                                    try {
-                                        i[key] = JSON.stringify(d[key])
-                                    } catch {
+                                _.forEach(this.config['properties'], (p, key) => {
+                                    if (p['json'] === true) {
+                                        try {
+                                            i[key] = JSON.stringify(d[key])
+                                        } catch {
 
+                                        }
+                                    } else {
+                                        i[key] = d[key];
                                     }
-                                } else {
-                                    i[key] = d[key];
-                                }
-                            });
+                                });
 
-                            realm.create(this.config['name'], i, update === true);
+                                realm.create(this.config['name'], i, update === true);
+                            } catch (e) {
+                                console.log(e);
+                            }
                         });
 
                         resolve({

@@ -11,6 +11,8 @@ import {RealmDB} from "../../../../realm";
 import {PosPullActions} from "../../../../../../framework/modules/pos/R/entities/pull.actions";
 import {TaxClassDB} from "../../../../../../framework/modules/pos/database/xretail/db/tax-class";
 import {ProductDB} from "../../../../../../framework/modules/pos/database/xretail/db/product";
+import {DatabaseManager} from "../../../../../../framework/modules/pos/database/xretail";
+import * as _ from "lodash";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
@@ -28,6 +30,17 @@ class PosOutletView extends React.Component<any, any> {
                         TaxClassDB.getCode(),
                         ProductDB.getCode()
                     ]);
+                    break;
+                case "nop":
+                    app().resolve<DatabaseManager>(DatabaseManager)
+                         .getDbInstance()
+                         .products
+                         .toArray()
+                         .then((data) => {
+                             console.log(1);
+
+                             console.log(_.size(data));
+                         });
                     break;
                 case "progress":
                     if (typeof this.progressInteval !== 'undefined') {
@@ -63,6 +76,7 @@ class PosOutletView extends React.Component<any, any> {
                 <View style={outletRegisterStyles.registerContainer}>
                     <View>
                         <Button title="Pull" onPress={() => this.test('pull')}/>
+                        <Button title="Number Product" onPress={() => this.test('nop')}/>
                         <Button title="Test Progress" onPress={() => this.test('progress')}/>
                         <Button title="Delete DB" onPress={() => this.test('deleteDB')}/>
                     </View>
