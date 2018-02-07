@@ -4,6 +4,11 @@ import {EffectsModule} from "../../redux-observable/effect";
 import {replaceModuleReducer} from "../../redux/store";
 import {ModuleConfig} from "../../general/module-manager";
 import {ProgressActions} from "./R/progress-bar/actions";
+import {PosGeneralActions} from "./R/general/general.actions";
+import {PosEntitiesActions} from "./R/entities/entities.actions";
+import {PosPullActions} from "./R/entities/pull.actions";
+import {ApiManager} from "./services/api-manager";
+import {DatabaseManager} from "./database/xretail";
 
 const name = "framework_pos";
 
@@ -14,8 +19,16 @@ export function boot() {
 }
 
 const services = [
+    ApiManager,
+    DatabaseManager,
+
     ProgressActions,
-    ProgressBarEffect
+    ProgressBarEffect,
+
+    PosGeneralActions,
+    PosEntitiesActions,
+    PosPullActions,
+
 ];
 
 

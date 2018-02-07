@@ -13,3 +13,11 @@ const appReducers = {
 export function createReducer(asyncReducers = {}) {
     return combineReducers(Object.assign(appReducers, asyncReducers));
 }
+
+export const mergeSliceReducers = (initialState: any, ...sliceReducer: any[]) => {
+    return (state = initialState, action: any) => {
+        _.forEach(sliceReducer, (reducer: any) => {state = reducer(state, action);});
+
+        return state;
+    };
+};
