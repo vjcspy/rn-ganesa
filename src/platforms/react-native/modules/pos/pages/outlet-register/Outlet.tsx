@@ -37,8 +37,6 @@ class PosOutletView extends React.Component<any, any> {
                          .products
                          .toArray()
                          .then((data) => {
-                             console.log(1);
-
                              console.log(_.size(data));
                          });
                     break;

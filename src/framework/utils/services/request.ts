@@ -10,7 +10,7 @@ export class RequestService {
     constructor(protected notify: NotifyManager) {
     }
 
-    getRequestOptions() {
+    protected getRequestOptions() {
         if (typeof this.header === 'undefined') {
             this.header = new Headers();
             // this.header.append("Black-Hole", "mr.vjcspy@gmail.com");
@@ -20,7 +20,7 @@ export class RequestService {
         return {headers: this.header};
     }
 
-    _prepareUrl(url: string): string {
+    protected _prepareUrl(url: string): string {
         url += url.indexOf('?') > -1 ?
             `&forceFullPageCache=${Date.now()}&token_key=${btoa('mr.vjcspy@gmail.com')}` :
             `?forceFullPageCache=${Date.now()}&token_key=${btoa('mr.vjcspy@gmail.com')}`;
@@ -28,42 +28,46 @@ export class RequestService {
         return url;
     }
 
+    protected _handleError(error) {
+        let errMsg;
+        if (error['status'] === 0) {
+            this.notify.error('Internal Server Error');
+        } else {
+            if (error.status === 400 && error.hasOwnProperty('_body')) {
+                let _mess = JSON.parse(error['_body']);
+                if (_mess.error === true) {
+                    this.notify.error(_mess['message'], null, {
+                        newestOnTop: false,
+                        showCloseButton: true,
+                        enableHTML: true
+                    });
+                } else {
+                    this.notify.error('unknown_error');
+                }
+            } else {
+                errMsg = (
+                    error.message) ? error.message :
+                    error.status ? `${error.status} - ${error.statusText}` : 'Server not responding';
+                this.notify.error(errMsg, "Opp!");
+            }
+        }
+        return Observable.throw(error);
+    }
+
     makeGet(url, option?: any) {
         url = this._prepareUrl(url);
 
         return Observable.fromPromise(fetch(url, Object.assign({method: 'GET'}, this.getRequestOptions(), option)))
                          .switchMap((res: Response) => {
-                             return Observable.fromPromise(res.json());
+                             return res.status === 200 ? Observable.fromPromise(res.json()) : this._handleError(res);
                          })
                          .catch(
                              (error: any) => {
-                                 let errMsg;
-                                 if (error['status'] === 0) {
-                                     this.notify.error('Internal Server Error');
-                                 } else {
-                                     if (error.status === 400 && error.hasOwnProperty('_body')) {
-                                         let _mess = JSON.parse(error['_body']);
-                                         if (_mess.error === true) {
-                                             this.notify.error(_mess['message'], null, {
-                                                 newestOnTop: false,
-                                                 showCloseButton: true,
-                                                 enableHTML: true
-                                             });
-                                         } else {
-                                             this.notify.error('unknown_error');
-                                         }
-                                     } else {
-                                         errMsg = (
-                                             error.message) ? error.message :
-                                             error.status ? `${error.status} - ${error.statusText}` : 'Server not responding';
-                                         this.notify.error(errMsg, "Opp!");
-                                     }
-                                 }
-                                 return Observable.throw(error);
+                                 return this._handleError(error);
                              });
     }
 
-    makePost(url, data: any, showError: boolean = true) {
+    makePost(url, data: any) {
         url = this._prepareUrl(url);
 
         return Observable.fromPromise(fetch(url, Object.assign({
@@ -75,27 +79,7 @@ export class RequestService {
                          })
                          .catch(
                              (error: any) => {
-                                 if (showError) {
-                                     if (error['status'] === 0) {
-                                         this.notify.error('Internal Server Error');
-                                     } else {
-                                         if (error.status === 400 && error.hasOwnProperty('_body')) {
-                                             let _mess = JSON.parse(error['_body']);
-                                             if (_mess.error === true) {
-                                                 this.notify.error(_mess['message'], null, {
-                                                     newestOnTop: false,
-                                                     showCloseButton: true,
-                                                     enableHTML: true
-                                                 });
-                                             } else {
-                                                 this.notify.error('unknown_error');
-                                             }
-                                         } else {
-                                             this.notify.error('server_not_responding');
-                                         }
-                                     }
-                                 }
-                                 return Observable.throw(error);
+                                 return this._handleError(error);
                              });
     }
 
@@ -108,7 +92,7 @@ export class RequestService {
                          })
                          .catch(
                              (error: any) => {
-                                 return Observable.throw(error);
+                                 return this._handleError(error);
                              });
     }
 

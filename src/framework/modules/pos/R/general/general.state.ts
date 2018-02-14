@@ -16,7 +16,7 @@ export interface PosGeneralStateRecord extends TypedRecord<PosGeneralStateRecord
 }
 
 export const posGeneralStateFactory = makeTypedFactory<PosGeneralState, PosGeneralStateRecord>({
-    baseUrl: "http://xpos.ispx.smartosc.com",
+    baseUrl: "https://magento2demo.connectpos.com",
     urls: List.of(),
     store: {
         id: 1

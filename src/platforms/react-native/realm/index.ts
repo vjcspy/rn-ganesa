@@ -84,7 +84,7 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                     } catch (e) {
                         reject({
                             isError: true,
-                            message: "clear entity error",
+                            message: "bulk add entity error",
                             e
                         });
                     }
@@ -125,7 +125,7 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                 } catch (e) {
                     reject({
                         isError: true,
-                        message: "clear entity error",
+                        message: "get entity error",
                         e
                     });
                 }
@@ -146,7 +146,7 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                     } catch (e) {
                         reject({
                             isError: true,
-                            message: "clear entity error",
+                            message: "delete entity error",
                             e
                         });
                     }
@@ -181,7 +181,7 @@ export class AbstractEntityRealmDatabase extends DataObject implements EntityDat
                     } catch (e) {
                         reject({
                             isError: true,
-                            message: "clear entity error",
+                            message: "save entity error",
                             e
                         });
                     }

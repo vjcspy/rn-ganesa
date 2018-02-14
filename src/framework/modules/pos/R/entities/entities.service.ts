@@ -23,15 +23,16 @@ export class PosEntitiesService {
         return new Promise(async (resolve, reject) => {
             let db = this.databaseManager.getDbInstance();
             try {
-                let gData = await db.entityInformation.query('id = "' + entity + '"');
+                console.log('before get');
+                let gData = await db.entityInformation.get('id = "' + entity + '"');
 
                 if (gData.isError !== true) {
                     resolve(gData.data.length === 1 ? _.first(gData.data) : null);
                 } else {
                     reject(gData.e);
                 }
-
             } catch (e) {
+                console.log(e);
                 reject(e);
             }
         });
@@ -39,51 +40,58 @@ export class PosEntitiesService {
     }
 
     async getStateCurrentEntityDb(generalState: PosGeneralState, entity: Entity): Promise<GeneralMessage> {
-        const entityCode   = entity.entityCode;
-        let db             = this.databaseManager.getDbInstance();
-        let entityDataInfo = await this.getEntityDataInformation(entity.entityCode);
-
-        if (entity.isDependStore === true && (!generalState.store || parseInt(generalState.store['id']) < 1)) {
-            throw new GeneralException("please_select_outlet_before");
-        }
-
-        // if difference store id will flush
-        if (entityDataInfo
-            && (
-                (entity.isDependStore === true && generalState.store['id'] !== entityDataInfo.getData("storeId"))
-                || entity.pageSize !== entityDataInfo.getData("pageSize") || generalState.baseUrl !== entityDataInfo.getData("base_url")
-            )
-        ) {
-            await this.whenNotValidDb(entityCode);
-            entityDataInfo = null;
-        }
-
-        // never init before
-        if (!entityDataInfo || !entityDataInfo.hasOwnProperty('id')) {
-            // First time pull data so we init default value
-            let entityDataInfo         = new EntityInformation();
-            entityDataInfo.id          = entityCode;
-            entityDataInfo.currentPage = 0;
-            entityDataInfo.isFinished  = false;
-            entityDataInfo.pageSize    = entity.pageSize;
-            entityDataInfo.storeId     = entity.isDependStore === true ? generalState.store['id'] : null;
-            entityDataInfo.base_url    = generalState.baseUrl;
-
-            await db.entityInformation.save(entityDataInfo, true);
-
-            return {data: {notValidDB: true}};
-        }
-
-        return entityDataInfo.hasOwnProperty('id')
-        && entityDataInfo.getData("id") === entityCode
-        && entityDataInfo.getData("isFinished") === true
-        && (entity.isDependStore !== true || entityDataInfo.getData("storeId") === generalState.store['id']) ?
-            {data: {isFinished: true}} : {
-                data: {
-                    isFinished: false,
-                    currentPage: entityDataInfo.getData("currentPage")
+        return new Promise<GeneralMessage>(async (resolve, reject) => {
+            try {
+                const entityCode   = entity.entityCode;
+                let db             = this.databaseManager.getDbInstance();
+                let entityDataInfo = await this.getEntityDataInformation(entity.entityCode);
+                console.log(entityDataInfo);
+                if (entity.isDependStore === true && (!generalState.store || parseInt(generalState.store['id']) < 1)) {
+                    throw new GeneralException("please_select_outlet_before");
                 }
-            };
+
+                // if difference store id will flush
+                if (entityDataInfo
+                    && (
+                        (entity.isDependStore === true && generalState.store['id'] !== entityDataInfo.getData("storeId"))
+                        || entity.pageSize !== entityDataInfo.getData("pageSize") || generalState.baseUrl !== entityDataInfo.getData("base_url")
+                    )
+                ) {
+                    await this.whenNotValidDb(entityCode);
+                    entityDataInfo = null;
+                }
+
+                // never init before
+                if (!entityDataInfo || !entityDataInfo.hasOwnProperty('id')) {
+                    // First time pull data so we init default value
+                    let entityDataInfo         = new EntityInformation();
+                    entityDataInfo.id          = entityCode;
+                    entityDataInfo.currentPage = 0;
+                    entityDataInfo.isFinished  = false;
+                    entityDataInfo.pageSize    = entity.pageSize;
+                    entityDataInfo.storeId     = entity.isDependStore === true ? generalState.store['id'] : null;
+                    entityDataInfo.base_url    = generalState.baseUrl;
+
+                    await db.entityInformation.save(entityDataInfo, true);
+
+                    return resolve({data: {notValidDB: true}});
+                }
+
+                resolve(entityDataInfo.hasOwnProperty('id')
+                && entityDataInfo.getData("id") === entityCode
+                && entityDataInfo.getData("isFinished") === true
+                && (entity.isDependStore !== true || entityDataInfo.getData("storeId") === generalState.store['id']) ?
+                    {data: {isFinished: true}} : {
+                        data: {
+                            isFinished: false,
+                            currentPage: entityDataInfo.getData("currentPage")
+                        }
+                    });
+            } catch (e) {
+                console.log(e);
+                reject(e);
+            }
+        });
     }
 
     protected async whenNotValidDb(entity: string): Promise<any> {
@@ -104,7 +112,6 @@ export class PosEntitiesService {
             let url            = this.apiManager.get(entity.apiUrlCode, generalState.baseUrl);
             const nextPagePull = (entity.currentPage + 1);
             url += url.indexOf("?") > -1 ? "&" : "?" + entity.query;
-
             this.requestService
                 .makeGet(url)
                 .subscribe(
@@ -160,23 +167,26 @@ export class PosEntitiesService {
     }
 
     async getDataFromLocalDB(entitiesCodes: string[]): Promise<GeneralMessage> {
-        return new Promise(async (resolve) => {
-            let data = {};
-            let db   = this.databaseManager.getDbInstance();
+        return new Promise(async (resolve, reject) => {
+            try {
+                let data = {};
+                let db   = this.databaseManager.getDbInstance();
 
-            let entityCode;
+                let entityCode;
 
-            for (let i = 0; i < entitiesCodes.length; i++) {
-                let items              = await db[entitiesCodes[i]].toArray();
-                let entityInfo         = await this.getEntityDataInformation(entitiesCodes[i]);
-                data[entitiesCodes[i]] = {
-                    items,
-                    ...JSON.parse(JSON.stringify(entityInfo)),
-                    entityCode: entitiesCodes[i]
-                };
+                for (let i = 0; i < entitiesCodes.length; i++) {
+                    let items              = await db[entitiesCodes[i]].toArray();
+                    let entityInfo         = await this.getEntityDataInformation(entitiesCodes[i]);
+                    data[entitiesCodes[i]] = {
+                        items,
+                        ...JSON.parse(JSON.stringify(entityInfo)),
+                        entityCode: entitiesCodes[i]
+                    };
+                }
+                return resolve({data});
+            } catch (e) {
+                return reject(e);
             }
-
-            return resolve({data});
         });
     }
 
