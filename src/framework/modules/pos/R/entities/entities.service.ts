@@ -23,7 +23,6 @@ export class PosEntitiesService {
         return new Promise(async (resolve, reject) => {
             let db = this.databaseManager.getDbInstance();
             try {
-                console.log('before get');
                 let gData = await db.entityInformation.get('id = "' + entity + '"');
 
                 if (gData.isError !== true) {
