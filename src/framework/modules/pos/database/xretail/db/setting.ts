@@ -7,8 +7,7 @@ export class SettingDB extends DataObject {
   
   key: string;
   value: any;
-  store_id: number;
-  
+
   static getFields(): string {
     return "key++,value";
   }
@@ -42,5 +41,4 @@ export class SettingDB extends DataObject {
 interface ConfigInterface {
   key: string;
   value: any;
-  store_id: number;
 }

@@ -18,8 +18,12 @@ export class ReceiptsRealm extends AbstractEntityRealmDatabase {
             subtotal_incl_tax: "string",
             enable_barcode: "string",
             enable_power_text: "string",
-            order_info: "string",
-            is_default: "string",
+            order_info: {
+                type: "string",
+                optional: true,
+                json: true
+            },
+            is_default: "bool",
         }
     };
 }

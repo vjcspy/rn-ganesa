@@ -33,7 +33,7 @@ export class RetailDB implements RetailDBInterface {
     settings          = new SettingsRealm();
     shifts            = new ShiftsRealm();
     stores            = new StoresRealm();
-    tax               = new TaxRealm();
+    taxes               = new TaxRealm();
     taxClass          = new TaxClassRealm();
     userOrderCount    = new UserOrderCountRealm();
 
@@ -52,7 +52,7 @@ export class RetailDB implements RetailDBInterface {
             this.settings.config,
             this.shifts.config,
             this.stores.config,
-            this.tax.config,
+            this.taxes.config,
             this.taxClass.config,
             this.userOrderCount.config,
         ];

@@ -9,9 +9,13 @@ export class CategoryRealm extends AbstractEntityRealmDatabase {
             id: "string",
             name: "string",
             parent_id: "string",
-            product_ids: "string",
+            product_ids: {
+                type: "string",
+                optional: true,
+                json: true
+            },
             is_active: "string",
-            level: "int",
+            level: "string",
             position: "string",
             path: "string",
             image_url: "string?",

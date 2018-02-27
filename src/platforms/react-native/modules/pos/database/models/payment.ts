@@ -14,9 +14,9 @@ export class PaymentRealm extends AbstractEntityRealmDatabase {
                 optional: true,
                 json: true
             },
-            is_active: "string",
-            is_dummy: "string",
-            allow_amount_tendered: "string",
+            is_active: "bool",
+            is_dummy: "bool",
+            allow_amount_tendered: "bool",
         }
     };
 }

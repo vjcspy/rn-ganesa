@@ -10,7 +10,7 @@ export class UserOrderCountRealm extends AbstractEntityRealmDatabase {
             outlet_id: "string",
             register_id: "string",
             user_id: "string",
-            order_count: "int",
+            order_count: "string",
         }
     };
 }

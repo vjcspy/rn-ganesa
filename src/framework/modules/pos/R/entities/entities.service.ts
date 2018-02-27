@@ -44,7 +44,7 @@ export class PosEntitiesService {
                 const entityCode   = entity.entityCode;
                 let db             = this.databaseManager.getDbInstance();
                 let entityDataInfo = await this.getEntityDataInformation(entity.entityCode);
-               
+
                 if (entity.isDependStore === true && (!generalState.store || parseInt(generalState.store['id']) < 1)) {
                     throw new GeneralException("please_select_outlet_before");
                 }
@@ -72,7 +72,6 @@ export class PosEntitiesService {
                     entityDataInfo.base_url    = generalState.baseUrl;
 
                     await db.entityInformation.save(entityDataInfo, true);
-
                     return resolve({data: {notValidDB: true}});
                 }
 

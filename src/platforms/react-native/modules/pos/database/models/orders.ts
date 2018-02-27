@@ -4,20 +4,19 @@ import {OrderDB} from "../../../../../../framework/modules/pos/database/xretail/
 export class OrdersRealm extends AbstractEntityRealmDatabase {
     config = {
         name: OrderDB.getCode(),
-        primaryKey: "id",
         properties: {
-            id: "string",
+            id: "string?",
             order_id: "string",
             status: "string",
             increment_id: "string",
             retail_id: "string",
-            retail_note: "string",
+            retail_note: "string?",
             retail_status: "string",
-            can_creditmemo: "string",
-            can_ship: "string",
-            can_invoice: "string",
-            sync_data: "string",
-            pushed: "int", // 0: not pushed, 1: pushed success, 3: pushed failed
+            can_creditmemo: "bool",
+            can_ship: "bool",
+            can_invoice: "bool",
+            sync_data: "string?",
+            pushed: "int?", // 0: not pushed, 1: pushed success, 3: pushed failed
             customer: {
                 type: "string",
                 optional: true,

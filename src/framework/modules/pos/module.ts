@@ -12,6 +12,7 @@ import {DatabaseManager} from "./database/xretail";
 import {PosEntitiesService} from "./R/entities/entities.service";
 import {PosEntitiesEffects} from "./R/entities/entities.effects";
 import {PosPullEffects} from "./R/entities/pull.effects";
+import {EntitiesHelper} from "./services/entities-helper";
 
 const name = "framework_pos";
 
@@ -26,6 +27,7 @@ export function boot() {
 const services = [
     ApiManager,
     DatabaseManager,
+    EntitiesHelper,
 
     ProgressActions,
     ProgressBarEffect,

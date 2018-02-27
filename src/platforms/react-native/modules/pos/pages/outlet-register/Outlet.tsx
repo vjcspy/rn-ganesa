@@ -13,6 +13,7 @@ import {TaxClassDB} from "../../../../../../framework/modules/pos/database/xreta
 import {ProductDB} from "../../../../../../framework/modules/pos/database/xretail/db/product";
 import {DatabaseManager} from "../../../../../../framework/modules/pos/database/xretail";
 import * as _ from "lodash";
+import {EntitiesHelper} from "../../../../../../framework/modules/pos/services/entities-helper";
 
 class PosOutletView extends React.Component<any, any> {
     state = {};
@@ -26,10 +27,7 @@ class PosOutletView extends React.Component<any, any> {
                     RealmDB.deleteDB();
                     break;
                 case "pull":
-                    app().resolve<PosPullActions>(PosPullActions).pullEntities([
-                        TaxClassDB.getCode(),
-                        ProductDB.getCode()
-                    ]);
+                    app().resolve<PosPullActions>(PosPullActions).pullEntities(app().resolve<EntitiesHelper>(EntitiesHelper).getFullEntityPull());
                     break;
                 case "nop":
                     app().resolve<DatabaseManager>(DatabaseManager)

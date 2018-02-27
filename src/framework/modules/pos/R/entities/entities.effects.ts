@@ -43,8 +43,8 @@ export class PosEntitiesEffects {
                                                                                              .map((mes: GeneralMessage) => {
                                                                                                  return this.entitiesActions.getEntityDataFromDB(entityCode, mes.data[entityCode], false);
                                                                                              })
-                                                                                             .catch((e: GeneralException) => Observable.of(this.rootActions.error(!!e && e.hasOwnProperty('getMessage') ? e.getMessage() : null, e, false))))
-                                                                    .catch((e: GeneralException) => Observable.of(this.rootActions.error(!!e && e.hasOwnProperty('getMessage') ? e.getMessage() : null, e, false)))
+                                                                                             .catch((e: GeneralException) => this.outputErrorAction(e)))
+                                                                    .catch((e: GeneralException) => this.outputErrorAction(e));
                                                });
 
     @Effect() pullEntityDataFromServer$ = this.actions$
@@ -81,7 +81,7 @@ export class PosEntitiesEffects {
                                                                                    this.entitiesActions.pullEntityNextPage(entityCode, this.createQueryPull(entity, <any>generalState), false);
                                                                            }
                                                                        })
-                                                                       .catch((e: GeneralException) => Observable.of(this.rootActions.error(!!e && e.hasOwnProperty('getMessage') ? e.getMessage() : null, e, false)));
+                                                                       .catch((e: GeneralException) => this.outputErrorAction(e));
                                                   }
                                               });
 
@@ -154,5 +154,10 @@ export class PosEntitiesEffects {
                 + "&searchCriteria[registerId]=" + generalState.register['id'];
         }
         return _query;
+    }
+
+    protected outputErrorAction(e) {
+        console.log('error when pulling, please check');
+        return Observable.of(this.rootActions.error(!!e && e.hasOwnProperty('getMessage') ? e.getMessage() : null, e, false))
     }
 }

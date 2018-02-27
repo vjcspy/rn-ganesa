@@ -11,8 +11,7 @@ export class SettingsRealm extends AbstractEntityRealmDatabase {
                 type: "string",
                 optional: true,
                 json: true
-            },
-            store_id: "int"
+            }
         }
     };
 }
