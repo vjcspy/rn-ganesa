@@ -18,12 +18,10 @@ export const pullReducer = (state: PosPullStateRecord = posPullStateFactory(), a
             return state.isPullingChain === true ?
                 state.update('pullingChain', (pullingChain: List<string>) => pullingChain.filter((entityCode) => entityCode !== action.payload['entityCode']))
                      .update('pullingChainSuccess', (pullingChainSuccess: List<string>) => pullingChainSuccess.push(action.payload['entityCode']))
-                     .set('pullingEntity', null)
                 : state;
 
         case PosEntitiesActions.ACTION_PULL_ENTITY_DATA_FROM_SERVER:
-            return state.set('pullingEntity', action.payload['entityCode'])
-                        .update('pullingChainStarted', (p) => p.push(action.payload['entityCode']));
+            return state.update('pullingChainStarted', (p) => p.push(action.payload['entityCode']));
 
         default:
             return state;
