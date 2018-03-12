@@ -29,17 +29,29 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
     ],
-    "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-navigation)"
-    ]
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/",
+      "<rootDir>/lib/"
+    ],
+    "cacheDirectory": ".jest/cache"
   },
   "dependencies": {
+    "@types/react-redux": "^5.0.14",
     "bluebird": "^3.3.5",
     "event-emitter": "^0.3.4",
     "immutable": "^3.8.2",
+    "inversify": "^4.9.0",
     "lodash": "^4.11.0",
     "moment": "^2.20.1",
     "native-base": "^2.3.5",
@@ -51,13 +63,24 @@
     "react-native-vector-icons": "^4.4.3",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
+    "realm": "^2.2.6",
     "redux": "^3.7.2",
     "redux-logger": "^2.6.1",
     "redux-observable": "^0.17.0",
+    "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.6",
-    "standard-http-error": "^2.0.1"
+    "standard-http-error": "^2.0.1",
+    "typed-immutable-record": "^0.0.6"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.6",
+    "@types/jest": "^22.0.1",
+    "@types/lodash": "^4.14.92",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.34",
+    "@types/react-native": "^0.51.9",
+    "@types/react-navigation": "^1.0.26",
+    "@types/react-test-renderer": "^16.0.0",
     "babel-core": "^6.9.0",
     "babel-eslint": "^7.1.0",
     "babel-jest": "^22.0.4",
@@ -79,6 +102,8 @@
     "react-native-mock": "~0.2.5",
     "react-test-renderer": "^16.0.0",
     "remote-redux-devtools": "^0.5.7",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "ts-jest": "^22.0.1",
+    "typescript": "^2.6.2"
   }
 }
