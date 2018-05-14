@@ -2,6 +2,8 @@ import I18n from "react-native-i18n";
 import en from "./locales/en";
 import vi from "./locales/vi";
 
+
+// Need change after translate on web-base
 I18n.fallbacks = true;
 
 I18n.translations = {
